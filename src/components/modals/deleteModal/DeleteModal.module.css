@@ -1,0 +1,106 @@
+.modal-background {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: background;
+    background: rgb(44, 47, 57);
+    background: linear-gradient(37deg, rgba(44, 47, 57, 1) 0%, rgba(0, 0, 0, 1) 8%, rgba(80, 83, 92, 1) 100%);
+}
+
+.modal-background-visible {
+    opacity: 20%;
+}
+
+.modal-background .modal-background-invisible {
+    opacity: 0;
+}
+
+.modal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+    padding: 4px 48px 24px 48px;
+    transition: all;
+}
+
+.modal-container h3, p {
+    color: dimgrey;
+}
+
+.modal-container-opened {
+    scale: 100%;
+    opacity: 100%;
+}
+
+.modal-container .modal-container-closed {
+    scale: 125%;
+    opacity: 0;
+}
+
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 32px;
+}
+
+.modal-button {
+    width: 100px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+    border-radius: 4px;
+    border: none;
+    color: ghostwhite;
+    cursor: pointer;
+    margin: 0 12px;
+}
+
+.modal-button-delete {
+    background-color: #BF1D1D;
+}
+
+.modal-button-delete:hover {
+    background-color: #DB1414;
+}
+
+.modal-button-cancel {
+    background-color: lightskyblue;
+}
+
+.modal-button-cancel:hover {
+    background-color: deepskyblue;
+}
+
+.button-img-wrapper {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.button-text {
+    font-weight: bold;
+}
+
+.modal-button-delete .button-text {
+    padding-right: 8px;
+}
