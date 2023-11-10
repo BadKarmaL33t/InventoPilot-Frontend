@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import AppLoaderSplash from "./components/appLoaderSplash/AppLoaderSplash.jsx";
+import {Routes, Route} from 'react-router-dom';
+import Home from "./pages/homepage/Home.jsx";
+import Register from "./components/register/Register.jsx"
+import AuthNav from "./components/authNavigation/AuthNav.jsx";
+import UserNav from "./components/userNavigation/UserNav.jsx"
+import Login from "./components/login/Login.jsx";
+// import {AuthContext} from "./context/AuthContext.jsx";
+// import {useContext} from "react";
+import UserDetails from "./pages/userDetailsPage/UserDetailsPage.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+    // const { isAuth } = useContext(AuthContext);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <div className="page-container">
+            <AppLoaderSplash />
+
+            <AuthNav/>
+            <UserNav/>
+
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/register" element={<Register/>}/>
+                <Route path="/signin" element={<Login/>}/>
+                <Route path="app/users/:username" element={<UserDetails/>} />
+                {/*<Route path="/admin/dashboard" element={<Dashboard />}/>*/}
+
+                {/*<Route*/}
+                {/*    path="/new-post"*/}
+                {/*    element={isAuth ? <NewPost/> : <Home/>}*/}
+                {/*/>*/}
+                {/*<Route path="/posts/:postId" element={<PostDetail/>}/>*/}
+            </Routes>
+        </div>
+    )
 }
 
 export default App
