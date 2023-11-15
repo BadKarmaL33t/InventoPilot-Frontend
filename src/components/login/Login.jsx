@@ -80,8 +80,8 @@ function Login() {
                 >
                     Sign In
                 </button>
+                <p><Link to="/register" className={styles["sign-in-link"]}>Need an account? Sign up here</Link></p>
             </form>
-            <p><Link to="/register" className={styles["sign-in-link"]}>Need an account? Sign up here</Link></p>
         </>
     );
 }

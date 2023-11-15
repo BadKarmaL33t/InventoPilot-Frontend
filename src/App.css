@@ -1,42 +1,76 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  background: rgb(39,38,38);
+  background: -moz-linear-gradient(115deg, rgba(39,38,38,1) 0%, rgba(49,18,87,1) 28%, rgba(99,42,168,1) 80%, rgba(153,69,255,1) 95%, rgba(20,241,149,1) 100%);
+  background: -webkit-linear-gradient(115deg, rgba(39,38,38,1) 0%, rgba(49,18,87,1) 28%, rgba(99,42,168,1) 80%, rgba(153,69,255,1) 95%, rgba(20,241,149,1) 100%);
+  background: linear-gradient(115deg, rgba(39,38,38,1) 0%, rgba(49,18,87,1) 28%, rgba(99,42,168,1) 80%, rgba(153,69,255,1) 95%, rgba(20,241,149,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#272626",endColorstr="#14f195",GradientType=1);
+  --purple: #9945FF;
+  --purple-dark: #311257;
+  --purple-tile: rgba(49, 18, 87, 0.33);
+  --green: #14F195;
+  --grey-super-dark: #1C1C1C;
+  --grey-dark: rgba(12, 12, 12, 0.5);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.window-container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 20vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 90vw;
+  height: 100vh;
 }
 
-.card {
-  padding: 2em;
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 90vw;
+  height: 5vh;
 }
 
-.read-the-docs {
-  color: #888;
+.content-outer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90vw;
+  height: 95vh;
+  border: 2px solid red;
+}
+
+.content-left-inner-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(90vh - 48px);
+  width: 35vw;
+  padding: 24px;
+  background-color: var(--purple-tile);
+  border-radius: 16px;
+}
+
+.content-right-inner-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(90vh - 48px);
+  width: 45vw;
+  padding: 24px;
+  background-color: var(--purple-tile);
+  border-radius: 16px;
 }

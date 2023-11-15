@@ -8,7 +8,7 @@ import RefreshTokenUtil from "../authHooks/RefreshTokenUtil.jsx";
 export const AuthContext = createContext({});
 
 function AuthContextProvider({children}) {
-    const [auth, setAuth] = useState({isAuth: false, user: {}, status: "pending"});
+    const [auth, setAuth] = useState({isAuth: false, user: {}, status: "pending", isAdmin: false,});
     const navigate = useNavigate();
 
     useEffect (() => {
@@ -59,6 +59,7 @@ function AuthContextProvider({children}) {
             isAuth: false,
             user: null,
             status: "done",
+            isAdmin: false,
         });
         window.localStorage.clear();
     }
@@ -104,8 +105,10 @@ function AuthContextProvider({children}) {
                     lastname: userDetails.data.lastname,
                     username: userDetails.data.username,
                     password: userDetails.data.password,
+                    role: userDetails.data.role,
                 },
                 status: "done",
+                isAdmin: userDetails.data.role === "ADMIN",
             }));
 
             if (navUrl) {
@@ -132,6 +135,7 @@ function AuthContextProvider({children}) {
     const contextData = {
         isAuth: auth.isAuth,
         user: auth.user,
+        isAdmin: auth.isAdmin,
         signIn,
         signOut,
     };
