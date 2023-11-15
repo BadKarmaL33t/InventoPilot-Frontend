@@ -5,6 +5,7 @@
     align-items: center;
     width: 10vw;
     height: 100vh;
+    background-color: var(--grey-dark);
 }
 
 .menu-img-wrapper .menu-img {

@@ -1,6 +1,15 @@
 #root {
-  background: rgb(33,0,74);
-  background: linear-gradient(15deg, rgba(33,0,74,1) 0%, rgba(79,26,143,1) 16%, rgba(115,47,197,1) 32%, rgba(153,69,255,1) 55%, rgba(100,119,195,1) 74%, rgba(34,181,120,1) 100%);
+  background: rgb(39,38,38);
+  background: -moz-linear-gradient(115deg, rgba(39,38,38,1) 0%, rgba(49,18,87,1) 28%, rgba(99,42,168,1) 80%, rgba(153,69,255,1) 95%, rgba(20,241,149,1) 100%);
+  background: -webkit-linear-gradient(115deg, rgba(39,38,38,1) 0%, rgba(49,18,87,1) 28%, rgba(99,42,168,1) 80%, rgba(153,69,255,1) 95%, rgba(20,241,149,1) 100%);
+  background: linear-gradient(115deg, rgba(39,38,38,1) 0%, rgba(49,18,87,1) 28%, rgba(99,42,168,1) 80%, rgba(153,69,255,1) 95%, rgba(20,241,149,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#272626",endColorstr="#14f195",GradientType=1);
+  --purple: #9945FF;
+  --purple-dark: #311257;
+  --purple-tile: rgba(49, 18, 87, 0.33);
+  --green: #14F195;
+  --grey-super-dark: #1C1C1C;
+  --grey-dark: rgba(12, 12, 12, 0.5);
 }
 
 .window-container {
@@ -49,15 +58,19 @@
 .content-left-inner-container {
   display: flex;
   flex-direction: column;
-  border: 2px solid white;
-  height: 90vh;
-  width: 42vw;
+  height: calc(90vh - 48px);
+  width: 35vw;
+  padding: 24px;
+  background-color: var(--purple-tile);
+  border-radius: 16px;
 }
 
 .content-right-inner-container {
   display: flex;
   flex-direction: column;
-  border: 2px solid white;
-  height: 90vh;
-  width: 42vw;
+  height: calc(90vh - 48px);
+  width: 45vw;
+  padding: 24px;
+  background-color: var(--purple-tile);
+  border-radius: 16px;
 }
