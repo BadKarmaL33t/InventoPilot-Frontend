@@ -97,7 +97,7 @@ function LoginModal({open, modalVisible}) {
                         />
                         <label htmlFor="password-field" className={styles["label"]}>Password:</label>
                         <PasswordInput
-                            id="password-field"
+                            id="login-password-field"
                             name="password"
                             register={register}
                             errors={errors}

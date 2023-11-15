@@ -92,7 +92,7 @@
     color: var(--purple);
 }
 
-small {
+.modal-container small {
     visibility: hidden;
 }
 

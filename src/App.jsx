@@ -5,6 +5,7 @@ import AuthNav from "./components/authNavigation/AuthNav.jsx";
 import UserNav from "./components/userNavigation/UserNav.jsx"
 import LoginModal from "./components/modals/loginModal/LoginModal.jsx";
 import Home from "./pages/homepage/Home.jsx";
+import RegisterPage from "./pages/registerPage/RegisterPage.jsx";
 // import {AuthContext} from "./context/AuthContext.jsx";
 // import {useContext} from "react";
 
@@ -14,6 +15,9 @@ function App() {
     return (
         <div className="window-container">
             <AppLoaderSplash/>
+            <Routes>
+                <Route path="/signin" element={<LoginModal/>}/>
+            </Routes>
             <div className="menu-container">
                 <UserNav/>
             </div>
@@ -28,29 +32,30 @@ function App() {
                         <Routes>
                             <Route path="/" element={<Home/>}/>
                         </Routes>
-                        <Routes>
-                            <Route path="/signin" element={<LoginModal/>}/>
-                        </Routes>
                     </div>
                     <div className="content-right-inner-container">
 
                         {/*routes voor het rechter frame hier tussen plaatsen*/}
-
+                        <Routes>
+                            <Route
+                                path="/register"
+                                element={<RegisterPage/>}/>
+                        </Routes>
                     </div>
                 </div>
 
                 {/*voorbeeld routes*/}
 
                 {/*<Routes>*/}
-                {/*    <Route path="/" element={<Home/>}/>*/}
-                {/*    <Route*/}
-                {/*        path="/registerPage"*/}
-                {/*        element={isAdmin ? <RegisterPage/> : <Home/>}/>*/}
+
+
                 {/*    <Route path="/signin" element={<LoginModal/>}/>*/}
                 {/*    <Route*/}
                 {/*        path="/app/users/:username"*/}
                 {/*        element={isAuth ? <UserDetails/> : <Home/>} />*/}
                 {/*<Route path="/secure/admin/users" element={<Dashboard />}/>*/}
+                {/*<Route path="/registerPage"*/}
+                {/*element={isAdmin ? <RegisterPage/> : <Home/>}/>*/}
 
                 {/*<Route*/}
                 {/*    path="/orders"*/}
@@ -63,4 +68,4 @@ function App() {
     )
 }
 
-export default App
+export default App;

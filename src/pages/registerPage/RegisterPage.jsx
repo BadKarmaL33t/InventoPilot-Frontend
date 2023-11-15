@@ -1,15 +1,14 @@
 import styles from "./RegisterPage.module.css"
 import axios from "../../api/axios.js";
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import Input from "../../components/input/Input.jsx";
 import PasswordInput from "../../components/passwordInput/PasswordInput.jsx";
-import {useState} from "react";
+
 
 function RegisterPage() {
     const {handleSubmit, formState: {errors, isDirty, isValid}, register, watch} = useForm({mode: 'onChange'});
     const navigate = useNavigate();
-    const [passwordStrength, setPasswordStrength] = useState("");
     const watchPassword = watch("password");
     const PW_REGEX = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9';<>&|/\\]).{8,24}$/
     const EMAIL_REGEX = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -45,11 +44,6 @@ function RegisterPage() {
         }
         controller.abort();
     }
-
-    const handleInputChange = (e) => {
-        const value = e.target.value;
-        setPasswordStrength(passwordStrengthChecker(value));
-    };
 
     return (
         <>
@@ -121,8 +115,7 @@ function RegisterPage() {
                                 "' ; < > & | / \\ are not allowed"
                         }
                     }}
-                    onInput={name === "password" ? handleInputChange : undefined}                />
-                <p className={styles["password-strength"]}>{passwordStrength && <span>{`${passwordStrength} password`}</span>}</p>
+                />
 
                 <label htmlFor="matching-password-field" className={styles["label"]}>Confirm password:</label>
                 <PasswordInput
@@ -149,7 +142,6 @@ function RegisterPage() {
                     Sign Up
                 </button>
             </form>
-            <p><Link to="/signin" className={styles["registerPage-link"]}>Already registered? Sign in here</Link></p>
         </>
     );
 }
