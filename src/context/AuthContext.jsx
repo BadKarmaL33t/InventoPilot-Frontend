@@ -29,7 +29,7 @@ function AuthContextProvider({children}) {
                         const refreshedToken = await refreshToken(); // Call the refreshToken function
 
                         if (refreshedToken) {
-                            // Successfully refreshed token, re-check if the user is authenticated
+                            // Successfully refreshed token, re-check if the userInfoPage is authenticated
                             const refreshedDecoded = jwt_decode(refreshedToken);
                             if (isTokenValid(refreshedDecoded)) {
                                 // testlog of er gerefreshed wordt
@@ -119,8 +119,8 @@ function AuthContextProvider({children}) {
                 console.error('Request cancelled:', error.response.status);
             } else {
                 console.error(error?.response?.status +
-                    ": You either don't have permission to fetch user details " +
-                    "or the user does not exist at all. " +
+                    ": You either don't have permission to fetch userInfoPage details " +
+                    "or the userInfoPage does not exist at all. " +
                     "This error usually occurs during testing, " +
                     "when a valid token still exists in localstorage, " +
                     "but the backend restarted and with that a database reset has been executed");

@@ -2,11 +2,10 @@ import styles from './DeleteModal.module.css'
 
 function DeleteModal({ open, modalVisible, handleDelete, post }) {
     return (
-        // background
         <div
             className={`${styles["modal-background"]} modal-background-${open ? "visible" : "invisible"}`}
         >
-            {/* modal */}
+
             <div className={`${styles["modal-container"]} modal-container-${open ? "opened" : "closed"}`}>
                 <h3 className={styles["modal-title"]}>Are You Sure You Want To Delete This Post?</h3>
                 {/* eslint-disable-next-line react/no-unescaped-entities */}

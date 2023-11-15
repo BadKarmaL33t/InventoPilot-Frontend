@@ -1,10 +1,7 @@
 import styles from './Home.module.css';
 import logo from '../../assets/InventoPilotVector.png'
-import {useState} from "react";
-import DeleteModal from "../../components/modals/deleteModal/DeleteModal.jsx";
 
 function Home() {
-    const [modalOpen, toggleModalOpen] = useState(false);
 
     return (
         <article className={styles["intro-article"]}>
@@ -27,22 +24,6 @@ function Home() {
             <span className={styles["intro-img-wrapper"]}>
                 <img className={styles["company-logo"]} src={logo} alt="Company Logo"/>
             </span>
-
-            <button
-                className=
-                    {`${styles["modal-button"]} 
-                            ${styles["modal-button-delete"]}`}
-                onClick={() => toggleModalOpen(true)}
-            >
-                Delete
-            </button>
-
-    {modalOpen &&
-    <DeleteModal
-        open={modalOpen}
-        modalVisible={toggleModalOpen}
-        // handleDelete={() => handleDelete({post})}
-    />}
         </article>
     );
 }

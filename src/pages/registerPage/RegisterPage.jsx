@@ -1,11 +1,11 @@
-import styles from "./Register.module.css"
+import styles from "./RegisterPage.module.css"
 import axios from "../../api/axios.js";
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import Input from "../../components/input/Input.jsx";
 import PasswordInput from "../../components/passwordInput/PasswordInput.jsx";
 
-function Register() {
+function RegisterPage() {
     const {handleSubmit, formState: {errors, isDirty, isValid}, register, watch} = useForm({mode: 'onChange'});
     const navigate = useNavigate();
     const watchPassword = watch("password");
@@ -46,7 +46,7 @@ function Register() {
 
     return (
         <>
-            <form onSubmit={handleSubmit(handleFormSubmit)} className={styles["register-form"]}>
+            <form onSubmit={handleSubmit(handleFormSubmit)} className={styles["registerPage-form"]}>
                 <h2>Register</h2>
                 <label htmlFor="email-field" className={styles["label"]}>Email:</label>
                 <Input
@@ -132,7 +132,7 @@ function Register() {
                         }
                     }}
                 />
-                <button className={styles["register-button"]}
+                <button className={styles["registerPage-button"]}
                         type="submit"
                         id="register-button"
                         disabled={!isDirty || !isValid}
@@ -140,9 +140,9 @@ function Register() {
                     Sign Up
                 </button>
             </form>
-            <p><Link to="/signin" className={styles["register-link"]}>Already registered? Sign in here</Link></p>
+            <p><Link to="/signin" className={styles["registerPage-link"]}>Already registered? Sign in here</Link></p>
         </>
     );
 }
 
-export default Register;
+export default RegisterPage;

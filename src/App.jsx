@@ -3,7 +3,7 @@ import AppLoaderSplash from "./components/appLoaderSplash/AppLoaderSplash.jsx";
 import {Routes, Route} from 'react-router-dom';
 import AuthNav from "./components/authNavigation/AuthNav.jsx";
 import UserNav from "./components/userNavigation/UserNav.jsx"
-import Login from "./components/login/Login.jsx";
+import LoginModal from "./components/modals/loginModal/LoginModal.jsx";
 import Home from "./pages/homepage/Home.jsx";
 // import {AuthContext} from "./context/AuthContext.jsx";
 // import {useContext} from "react";
@@ -29,7 +29,7 @@ function App() {
                             <Route path="/" element={<Home/>}/>
                         </Routes>
                         <Routes>
-                            <Route path="/signin" element={<Login/>}/>
+                            <Route path="/signin" element={<LoginModal/>}/>
                         </Routes>
                     </div>
                     <div className="content-right-inner-container">
@@ -44,9 +44,9 @@ function App() {
                 {/*<Routes>*/}
                 {/*    <Route path="/" element={<Home/>}/>*/}
                 {/*    <Route*/}
-                {/*        path="/register"*/}
-                {/*        element={isAdmin ? <Register/> : <Home/>}/>*/}
-                {/*    <Route path="/signin" element={<Login/>}/>*/}
+                {/*        path="/registerPage"*/}
+                {/*        element={isAdmin ? <RegisterPage/> : <Home/>}/>*/}
+                {/*    <Route path="/signin" element={<LoginModal/>}/>*/}
                 {/*    <Route*/}
                 {/*        path="/app/users/:username"*/}
                 {/*        element={isAuth ? <UserDetails/> : <Home/>} />*/}

@@ -1,10 +1,13 @@
 import styles from './AuthNav.module.css';
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {NavLink} from 'react-router-dom';
 import {AuthContext} from "../../context/AuthContext";
+import LoginModal from "../modals/loginModal/LoginModal.jsx";
 
 function AuthNav() {
     const {isAuth, signOut, user} = useContext(AuthContext);
+    const [modalOpen, toggleModalOpen] = useState(false);
+
 
     return (
         <nav className={styles["nav-container"]}>
@@ -37,11 +40,21 @@ function AuthNav() {
                     :
                     <>
                         <li>
-                            <NavLink
-                                className={styles["link_nav-menu"]}
-                                to="/signin">
+                            <button
+                                className=
+                                    {`${styles["modal-button"]} 
+                            ${styles["modal-button-sign-in"]}`}
+                                onClick={() => toggleModalOpen(true)}
+                            >
                                 Sign In
-                            </NavLink>
+                            </button>
+
+                            {modalOpen &&
+                                <LoginModal
+                                    open={modalOpen}
+                                    modalVisible={toggleModalOpen}
+                                />
+                            }
                         </li>
                     </>
                 }

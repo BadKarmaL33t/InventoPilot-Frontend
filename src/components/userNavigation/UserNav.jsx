@@ -8,7 +8,7 @@ function AuthNav() {
     const {isAuth, isAdmin, user} = useContext(AuthContext);
 
     return (
-        <nav className={styles["user-nav-container"]}>
+        <nav className={styles["userInfoPage-nav-container"]}>
             <ul className={styles["nav-list"]}>
                 {isAuth ?
                     <>
