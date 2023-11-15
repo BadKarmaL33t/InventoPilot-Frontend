@@ -1,11 +1,11 @@
 import './App.css'
 import AppLoaderSplash from "./components/appLoaderSplash/AppLoaderSplash.jsx";
-// import {Routes, Route} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 // import Home from "./pages/homepage/Home.jsx";
 // import Register from "./components/register/Register.jsx"
 import AuthNav from "./components/authNavigation/AuthNav.jsx";
 import UserNav from "./components/userNavigation/UserNav.jsx"
-// import Login from "./components/login/Login.jsx";
+import Login from "./components/login/Login.jsx";
 // import {AuthContext} from "./context/AuthContext.jsx";
 // import {useContext} from "react";
 // import UserDetails from "./pages/userDetailsPage/UserDetailsPage.jsx";
@@ -27,7 +27,9 @@ function App() {
                     <div className="content-left-inner-container">
 
                         {/*routes voor het linker frame hier tussen plaatsen*/}
-
+                        <Routes>
+                            <Route path="/" element={<Login/>}/>
+                        </Routes>
                     </div>
                     <div className="content-right-inner-container">
 
