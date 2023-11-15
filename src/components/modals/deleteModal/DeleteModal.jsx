@@ -1,5 +1,4 @@
 import styles from './DeleteModal.module.css'
-import trash from "../../../assets/deleteicon.png";
 
 function DeleteModal({ open, modalVisible, handleDelete, post }) {
     return (
@@ -22,12 +21,7 @@ function DeleteModal({ open, modalVisible, handleDelete, post }) {
                             handleDelete(post);
                         }}
                     >
-                        <span className={styles["button-img-wrapper"]}>
-                            <img src={trash} alt="trash" className={styles["button-img"]}/>
-                        </span>
-                        <span className={styles["button-text"]}>
                             Delete
-                        </span>
                     </button>
                     <button
                         className=
@@ -44,3 +38,5 @@ function DeleteModal({ open, modalVisible, handleDelete, post }) {
         </div>
     );
 }
+
+export default DeleteModal;
