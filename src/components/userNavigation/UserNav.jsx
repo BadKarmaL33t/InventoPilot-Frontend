@@ -1,4 +1,4 @@
-import styles from './UserNav.jsx.css';
+import styles from './UserNav.module.css';
 import {useContext} from "react";
 import {NavLink} from 'react-router-dom';
 import {AuthContext} from "../../context/AuthContext";
@@ -12,9 +12,9 @@ function AuthNav() {
             <ul className={styles["nav-list"]}>
                 {isAuth ?
                     <>
-                        <span className={styles["menu-img"]}>
-                            <img src={logo} alt="profile-img"/>
-                        </span>
+                        {/*<span className={styles["menu-img-wrapper"]}>*/}
+                        {/*    <img src={logo} alt="profile-img" className={styles["menu-img"]}/>*/}
+                        {/*</span>*/}
                         <li>
                             <h2>Navigation</h2>
                         </li>
@@ -52,9 +52,9 @@ function AuthNav() {
                     </>
                     :
                     <>
-                        <span className={styles["menu-img"]}>
-                            <img src={logo} alt="company-logo"/>
-                        </span>
+                        {/*<span className={styles["menu-img"]}>*/}
+                        {/*    <img src={logo} alt="company-logo"/>*/}
+                        {/*</span>*/}
                     </>
                 }
                 {
