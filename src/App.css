@@ -1,15 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&display=swap');
+
 #root {
-  background: rgb(39,38,38);
-  background: -moz-linear-gradient(115deg, rgba(39,38,38,1) 0%, rgba(49,18,87,1) 28%, rgba(99,42,168,1) 80%, rgba(153,69,255,1) 95%, rgba(20,241,149,1) 100%);
-  background: -webkit-linear-gradient(115deg, rgba(39,38,38,1) 0%, rgba(49,18,87,1) 28%, rgba(99,42,168,1) 80%, rgba(153,69,255,1) 95%, rgba(20,241,149,1) 100%);
-  background: linear-gradient(115deg, rgba(39,38,38,1) 0%, rgba(49,18,87,1) 28%, rgba(99,42,168,1) 80%, rgba(153,69,255,1) 95%, rgba(20,241,149,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#272626",endColorstr="#14f195",GradientType=1);
+  background: rgb(39, 38, 38);
+  background: -moz-linear-gradient(115deg, rgba(39, 38, 38, 1) 0%, rgba(49, 18, 87, 1) 28%, rgba(99, 42, 168, 1) 80%, rgba(153, 69, 255, 1) 95%, rgba(20, 241, 149, 1) 100%);
+  background: -webkit-linear-gradient(115deg, rgba(39, 38, 38, 1) 0%, rgba(49, 18, 87, 1) 28%, rgba(99, 42, 168, 1) 80%, rgba(153, 69, 255, 1) 95%, rgba(20, 241, 149, 1) 100%);
+  background: linear-gradient(115deg, rgba(39, 38, 38, 1) 0%, rgba(49, 18, 87, 1) 28%, rgba(99, 42, 168, 1) 80%, rgba(153, 69, 255, 1) 95%, rgba(20, 241, 149, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#272626", endColorstr="#14f195", GradientType=1);
   --purple: #9945FF;
   --purple-dark: #311257;
   --purple-tile: rgba(49, 18, 87, 0.33);
   --green: #14F195;
   --grey-super-dark: #1C1C1C;
   --grey-dark: rgba(12, 12, 12, 0.5);
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
 }
 
 .window-container {
