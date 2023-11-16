@@ -8,10 +8,9 @@ import LoginModal from "./components/modals/loginModal/LoginModal.jsx";
 // import RegisterPage from "./pages/registerPage/RegisterPage.jsx";
 // import AdminDashboard from "./pages/adminDashboardPage/AdminDashboardPage.jsx";
 import {useEffect, useState} from "react";
-import AppViewport from "./pages/appViewport/AppViewport.jsx";
+import AppViewport from "./components/appViewport/AppViewport.jsx";
 import {AuthContext} from "./context/AuthContext.jsx";
 import {useContext} from "react";
-import AdminDashboard from "./pages/adminDashboardPage/AdminDashboardPage.jsx";
 
 function App() {
     const { isAuth, isAdmin } = useContext(AuthContext);
@@ -53,8 +52,8 @@ function App() {
                         }
                         {isAdmin &&
                         <>
-                            <Route path="/secure/admin/users" element={<AppViewport />}/>
-                            <Route path="/secure/admin/users/:username" element={<AppViewport />}/>
+                            <Route path="/admin/users" element={<AppViewport page={pagePath}/>}/>
+                            <Route path="/admin/users/:username" element={<AppViewport page={pagePath}/>}/>
                         </>
                         }
                     </Routes>

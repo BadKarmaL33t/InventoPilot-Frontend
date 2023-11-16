@@ -32,7 +32,6 @@
   width: 10vw;
   height: 100vh;
   background-color: var(--grey-dark);
-  z-index: 2;
 }
 
 .page-container {
@@ -69,7 +68,8 @@
   padding: 24px;
   background-color: var(--purple-tile);
   border-radius: 16px;
-  z-index: 2;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .content-right-inner-container {
@@ -80,5 +80,6 @@
   padding: 24px;
   background-color: var(--purple-tile);
   border-radius: 16px;
-  z-index: 2;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

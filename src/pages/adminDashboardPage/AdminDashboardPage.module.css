@@ -1,0 +1,55 @@
+.all-users__user {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(105, 105, 105, 0.25);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 8px 0;
+}
+
+.user-details-wrapper {
+    display: block;
+    width: 200px;
+    margin: 0 40px;
+    text-wrap: normal;
+}
+
+.user-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-img-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.link__detail-link{
+    text-decoration: none;
+}
+
+.full-name {
+    color: white;
+    font-weight: 100;
+}
+
+.admin-button-delete {
+    background-color: #BF1D1D;
+    color: #FFFFFF;
+}
+
+.admin-button-delete:hover {
+    background-color: #DB1414;
+    color: #FFFFFF;
+}

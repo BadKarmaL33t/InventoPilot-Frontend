@@ -1,0 +1,42 @@
+.user-details-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px 0;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.label {
+    width: 80px;
+    margin-right: 12px;
+}
+
+.edit-button {
+    justify-self: flex-end;
+}
+
+.user-password-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.edit-password-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+small {
+    color: red;
+    margin-left: 12px;
+}

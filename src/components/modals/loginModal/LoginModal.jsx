@@ -33,7 +33,7 @@ function LoginModal({open, modalVisible}) {
                 }
             );
             signIn(response.data["jwt"]);
-            console.log("LoginModal successful");
+            console.log("Login successful");
             navigate('/');
             modalVisible(false);
             setStatus("idle");
@@ -106,9 +106,9 @@ function LoginModal({open, modalVisible}) {
                                     value: true,
                                     message: 'This field is required',
                                 },
-                                validate: {
-                                    matchPattern: (v) => /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9';<>&|/\\]).{8,24}$/.test(v) || "Invalid password"
-                                }
+                                // validate: {
+                                //     matchPattern: (v) => /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9';<>&|/\\]).{8,24}$/.test(v) || "Invalid password"
+                                // }
                             }}
                         />
                         <div className={styles["button-row"]}>

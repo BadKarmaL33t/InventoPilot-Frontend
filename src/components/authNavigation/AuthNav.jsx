@@ -30,7 +30,7 @@ function AuthNav() {
                         </li>
                         <li>
                             <div className={styles["user"]}>
-                                <h5 className={styles["username"]}>{user.username}</h5>
+                                <h5 className={styles["user-email"]}>{user.email}</h5>
                                 <button type="button" onClick={signOut} className={styles["nav-button-signout"]}>
                                     Sign Out
                                 </button>

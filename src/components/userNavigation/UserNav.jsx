@@ -5,7 +5,7 @@ import {AuthContext} from "../../context/AuthContext";
 import logo from '../../assets/InventoPilotVector.png';
 
 function AuthNav() {
-    const {isAuth, isAdmin, user} = useContext(AuthContext);
+    const { isAuth, isAdmin } = useContext(AuthContext);
     const [showItemList, toggleShowItemList] = useState(false)
 
 
@@ -16,7 +16,7 @@ function AuthNav() {
     return (
         <nav className={styles["user-nav-container"]}>
             <ul className={styles["user-nav-list"]}>
-                { !isAuth ?
+                { isAuth ?
                     <>
                         <span className={styles["menu-img-wrapper"]}>
                             <img src={logo} alt="profile-img" className={styles["menu-img"]}/>
@@ -87,7 +87,7 @@ function AuthNav() {
                     <>
                     </>
                 }
-                { !isAdmin ?
+                { isAdmin ?
                         <>
                             <li>
                                 <p className={styles["menu-title"]}>Admin</p>
@@ -95,7 +95,7 @@ function AuthNav() {
                             <li>
                                 <NavLink
                                     className={styles["link_nav-menu"]}
-                                    to="/secure/admin/users">
+                                    to="/admin/users">
                                     Admin Dashboard
                                 </NavLink>
                             </li>
