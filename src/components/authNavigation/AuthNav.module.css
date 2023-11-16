@@ -5,7 +5,6 @@
     align-items: center;
     width: 90vw;
     height: 5vh;
-    background-color: var(--purple-dark);
 }
 
 .nav-list {
@@ -20,6 +19,7 @@
 .nav-list li {
     padding: 0 16px;
 }
+
 .link_nav-menu {
     text-decoration: none;
     color: ghostwhite;

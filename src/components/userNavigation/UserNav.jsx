@@ -2,21 +2,26 @@ import styles from './UserNav.module.css';
 import {useContext} from "react";
 import {NavLink} from 'react-router-dom';
 import {AuthContext} from "../../context/AuthContext";
-import logo from '../../assets/InventoPilotVector.png';
+// import logo from '../../assets/InventoPilotVector.png';
 
 function AuthNav() {
     const {isAuth, isAdmin, user} = useContext(AuthContext);
 
     return (
-        <nav className={styles["userInfoPage-nav-container"]}>
-            <ul className={styles["nav-list"]}>
+        <nav className={styles["user-nav-container"]}>
+            <ul className={styles["user-nav-list"]}>
+
+                {/*test*/}
+                <li>
+                    <p>Navigation</p>
+                </li>
                 {isAuth ?
                     <>
-                        {/*<span className={styles["menu-img-wrapper"]}>*/}
-                        {/*    <img src={logo} alt="profile-img" className={styles["menu-img"]}/>*/}
-                        {/*</span>*/}
+                        <span className={styles["menu-img-wrapper"]}>
+                            <img src={logo} alt="profile-img" className={styles["menu-img"]}/>
+                        </span>
                         <li>
-                            <h2>Navigation</h2>
+                            <p>Navigation</p>
                         </li>
                         <li>
                             <NavLink
@@ -40,7 +45,7 @@ function AuthNav() {
                             </NavLink>
                         </li>
                         <li>
-                            <h2>User</h2>
+                            <p>User</p>
                         </li>
                         <li>
                             <NavLink
@@ -61,7 +66,7 @@ function AuthNav() {
                     isAdmin ?
                         <>
                             <li>
-                                <h2>Admin</h2>
+                                <p>Admin</p>
                             </li>
                             <li>
                                 <NavLink

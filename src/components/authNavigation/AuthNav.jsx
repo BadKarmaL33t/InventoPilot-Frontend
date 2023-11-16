@@ -10,7 +10,7 @@ function AuthNav() {
 
 
     return (
-        <nav className={styles["nav-container"]}>
+        <nav id={styles["nav-container"]}>
             <ul className={styles["nav-list"]}>
                 <li>
                     <NavLink
