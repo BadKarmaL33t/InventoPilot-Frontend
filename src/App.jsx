@@ -9,12 +9,13 @@ import LoginModal from "./components/modals/loginModal/LoginModal.jsx";
 // import AdminDashboard from "./pages/adminDashboardPage/AdminDashboardPage.jsx";
 import {useEffect, useState} from "react";
 import AppViewport from "./pages/appViewport/AppViewport.jsx";
-// import {AuthContext} from "./context/AuthContext.jsx";
-// import {useContext} from "react";
+import {AuthContext} from "./context/AuthContext.jsx";
+import {useContext} from "react";
+import AdminDashboard from "./pages/adminDashboardPage/AdminDashboardPage.jsx";
 
 function App() {
+    const { isAuth, isAdmin } = useContext(AuthContext);
     const location = useLocation();
-
     const [pagePath, setPagePath] = useState(location.pathname);
 
     useEffect(() => {
@@ -23,19 +24,39 @@ function App() {
 
     return (
         <div className="window-container">
-            <AppLoaderSplash />
+            <AppLoaderSplash/>
 
             <div className="menu-container">
-                <UserNav />
+                <UserNav/>
             </div>
             <div className="page-container">
                 <div className="navbar-container">
-                    <AuthNav />
+                    <AuthNav/>
                 </div>
                 <div className="content-outer-container">
                     <Routes>
-                        <Route path="/signin" element={<LoginModal />} />
-                        <Route path="/" element={<AppViewport page={pagePath} />} />
+                        <Route path="/signin" element={<LoginModal/>}/>
+                        <Route path="/" element={<AppViewport page={pagePath}/>}/>
+                        {isAuth &&
+                            <>
+                                <Route path="/dashboard" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/orders" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/orders/:id" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/products" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/products/:productName" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/components" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/components/:name" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/raws" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/raws/:name" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/users/:username" element={<AppViewport page={pagePath}/>}/>
+                            </>
+                        }
+                        {isAdmin &&
+                        <>
+                            <Route path="/secure/admin/users" element={<AppViewport />}/>
+                            <Route path="/secure/admin/users/:username" element={<AppViewport />}/>
+                        </>
+                        }
                     </Routes>
                 </div>
             </div>
@@ -46,34 +67,39 @@ function App() {
 export default App;
 
 
-            {/*<Routes>*/}
-            {/*    <Route*/}
-            {/*        path="/"*/}
-            {/*        element={<Home title="Welcome to the Home Page" />}*/}
-            {/*    />*/}
-            {/*    <Route*/}
-            {/*        path="/about"*/}
-            {/*        element={<About title="About Us" />}*/}
-            {/*    />*/}
-            {/*</Routes>*/}
 
 
-            {/*voorbeeld routes*/}
+{/*voorbeeld routes*/
+}
 
-            {/*<Routes>*/}
+{/*<Routes>*/
+}
 
 
-            {/*    <Route path="/signin" element={<LoginModal/>}/>*/}
-            {/*    <Route*/}
-            {/*        path="/app/users/:username"*/}
-            {/*        element={isAuth ? <UserDetails/> : <Home/>} />*/}
-            {/*<Route path="/secure/admin/users" element={<Dashboard />}/>*/}
-            {/*<Route path="/registerPage"*/}
-            {/*element={isAdmin ? <RegisterPage/> : <Home/>}/>*/}
+{/*    <Route path="/signin" element={<LoginModal/>}/>*/
+}
+{/*    <Route*/
+}
+{/*        path="/app/users/:username"*/
+}
+{/*        element={isAuth ? <UserDetails/> : <Home/>} />*/
+}
+{/*<Route path="/secure/admin/users" element={<Dashboard />}/>*/
+}
+{/*<Route path="/registerPage"*/
+}
+{/*element={isAdmin ? <RegisterPage/> : <Home/>}/>*/
+}
 
-            {/*<Route*/}
-            {/*    path="/orders"*/}
-            {/*    element={isAuth ? <NewPost/> : <Home/>}*/}
-            {/*/>*/}
-            {/*<Route path="/posts/:postId" element={<PostDetail/>}/>*/}
-            {/*</Routes>*/}
+{/*<Route*/
+}
+{/*    path="/orders"*/
+}
+{/*    element={isAuth ? <NewPost/> : <Home/>}*/
+}
+{/*/>*/
+}
+{/*<Route path="/posts/:postId" element={<PostDetail/>}/>*/
+}
+{/*</Routes>*/
+}

@@ -1,5 +1,4 @@
 .user-nav-container {
-    border: 2px solid red;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -9,17 +8,12 @@
 }
 
 .user-nav-list {
-    border: 2px solid white;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     list-style: none;
     margin-top: 4px;
-}
-
-.user-nav-lis li {
-    border: 2px solid green;
 }
 
 .menu-img-wrapper .menu-img {

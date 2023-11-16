@@ -64,8 +64,8 @@
 .content-left-inner-container {
   display: flex;
   flex-direction: column;
-  height: calc(90vh - 48px);
-  width: 35vw;
+  height: calc(95vh - 40px);
+  width: calc(36vw - 32px);
   padding: 24px;
   background-color: var(--purple-tile);
   border-radius: 16px;
@@ -75,8 +75,8 @@
 .content-right-inner-container {
   display: flex;
   flex-direction: column;
-  height: calc(90vh - 48px);
-  width: 45vw;
+  height: calc(95vh - 40px);
+  width: calc(54vw - 32px);
   padding: 24px;
   background-color: var(--purple-tile);
   border-radius: 16px;
