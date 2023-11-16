@@ -20,21 +20,21 @@
     padding: 0 16px;
 }
 
-.link_nav-menu {
+.link_nav {
     text-decoration: none;
     color: ghostwhite;
 }
 
-.link_nav-menu:visited {
+.link_nav:visited {
     text-decoration: none;
     color: lightgray;
 }
 
-.link_nav-menu:hover {
+.link_nav:hover {
     color: #60D49A;
 }
 
-.link_nav-menu::after {
+.link_nav::after {
     display: block;
     content: "";
     margin: auto;
@@ -44,7 +44,7 @@
     transition: ease-in-out 0.5s;
 }
 
-.link_nav-menu:hover::after {
+.link_nav:hover::after {
     width: 100%;
 }
 

@@ -14,7 +14,7 @@ function AuthNav() {
             <ul className={styles["nav-list"]}>
                 <li>
                     <NavLink
-                        className={styles["link_nav-menu"]}
+                        className={styles["link_nav"]}
                         to="/">
                         Home
                     </NavLink>
@@ -23,7 +23,7 @@ function AuthNav() {
                     <>
                         <li>
                             <NavLink
-                                className={styles["link_nav-menu"]}
+                                className={styles["link_nav"]}
                                 to={`/app/users/${user.username}`}>
                                 Profile
                             </NavLink>
