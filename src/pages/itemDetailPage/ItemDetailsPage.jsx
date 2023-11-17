@@ -97,8 +97,8 @@ function ItemDetails() {
                                 <p className={styles["input"]}>{selectedItem.name}</p>
                             )}
                         </div>
-                        <button className={styles["edit-button"]}
-                                onClick={() => toggleEditMode("username")}>{editModes.name ? "Cancel" : "Edit"}</button>
+                        <button className={styles["edit-button"]} type="button"
+                                onClick={() => toggleEditMode("name")}>{editModes.name ? "Cancel" : "Edit"}</button>
                     </div>
                     {(location.pathname === "/app/products" || location.pathname === "/app/products/new") ? (
                         <div className={styles["item-details-item"]}>
@@ -113,14 +113,13 @@ function ItemDetails() {
                                     <p className={styles["input"]}>{formatEnum(selectedItem.productType)}</p>
                                 )}
                             </div>
-                            <button className={styles["edit-button"]}
+                            <button className={styles["edit-button"]} type="button"
                                     onClick={() => toggleEditMode("productType")}>{editModes.productType ? "Cancel" : "Edit"}</button>
                         </div>
                     ) : (
                         <div className={styles["item-details-item"]}>
                             <div className={styles["item-details"]}>
-                                <label htmlFor="component-type-field" className={styles["label"]}>Component
-                                    Type:</label>
+                                <label htmlFor="component-type-field" className={styles["label"]}>Component Type:</label>
                                 {editModes.componentType ? (
                                     <select {...register("componentType")}>
                                         <option value="SOLUTION">Solution</option>
@@ -135,7 +134,7 @@ function ItemDetails() {
                                     <p className={styles["input"]}>{formatEnum(selectedItem.componentType)}</p>
                                 )}
                             </div>
-                            <button className={styles["edit-button"]}
+                            <button className={styles["edit-button"]} type="button"
                                     onClick={() => toggleEditMode("componentType")}>{editModes.componentType ? "Cancel" : "Edit"}</button>
                         </div>
                     )}
@@ -159,7 +158,7 @@ function ItemDetails() {
                                 <p className={styles["input"]}>{selectedItem.stock}</p>
                             )}
                         </div>
-                        <button className={styles["edit-button"]}
+                        <button className={styles["edit-button"]} type="button"
                                 onClick={() => toggleEditMode("stock")}>{editModes.stock ? "Cancel" : "Edit"}</button>
                     </div>
                     <div className={styles["item-details-item"]}>
@@ -175,7 +174,7 @@ function ItemDetails() {
                                 <p className={styles["input"]}>{formatEnum(selectedItem.productStatus)}</p>
                             )}
                         </div>
-                        <button className={styles["edit-button"]}
+                        <button className={styles["edit-button"]} type="button"
                                 onClick={() => toggleEditMode("productStatus")}>{editModes.productStatus ? "Cancel" : "Edit"}</button>
                     </div>
                     {(location.pathname === "/app/products" || location.pathname === "/app/products/new") ? (
@@ -213,7 +212,7 @@ function ItemDetails() {
                                 <p className={styles["input"]}>{selectedItem.minimalStock}</p>
                             )}
                         </div>
-                        <button className={styles["edit-button"]}
+                        <button className={styles["edit-button"]} type="button"
                                 onClick={() => toggleEditMode("minimalStock")}>{editModes.minimalStock ? "Cancel" : "Edit"}</button>
                     </div>
                     <div className={styles["item-details-item"]}>
@@ -236,7 +235,7 @@ function ItemDetails() {
                                 <p className={styles["input"]}>{selectedItem.maximalStock}</p>
                             )}
                         </div>
-                        <button className={styles["edit-button"]}
+                        <button className={styles["edit-button"]} type="button"
                                 onClick={() => toggleEditMode("maximalStock")}>{editModes.maximalStock ? "Cancel" : "Edit"}</button>
                     </div>
                     {(location.pathname === "/app/products" || location.pathname === "/app/products/new") ? (
@@ -260,7 +259,7 @@ function ItemDetails() {
                                     <p className={styles["input"]}>{selectedItem.serialNumber}</p>
                                 )}
                             </div>
-                            <button className={styles["edit-button"]}
+                            <button className={styles["edit-button"]} type="button"
                                     onClick={() => toggleEditMode("serialNumber")}>{editModes.serialNumber ? "Cancel" : "Edit"}</button>
                         </div>
                     ) : (
@@ -284,7 +283,7 @@ function ItemDetails() {
                                     <p className={styles["input"]}>{selectedItem.batchNumber}</p>
                                 )}
                             </div>
-                            <button className={styles["edit-button"]}
+                            <button className={styles["edit-button"]} type="button"
                                     onClick={() => toggleEditMode("batchNumber")}>{editModes.batchNumber ? "Cancel" : "Edit"}</button>
                         </div>
                     )}

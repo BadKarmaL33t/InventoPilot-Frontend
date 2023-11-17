@@ -107,7 +107,7 @@ function UserDetails() {
                                 <p className={styles["input"]}>{selectedUser.username}</p>
                             )}
                         </div>
-                        <button className={styles["edit-button"]}
+                        <button className={styles["edit-button"]} type="button"
                                 onClick={() => toggleEditMode("username")}>{editModes.username ? "Cancel" : "Edit"}</button>
                     </div>
                     <div className={styles["user-details-item"]}>
@@ -127,7 +127,7 @@ function UserDetails() {
                                 <p className={styles["input"]}>{selectedUser.email}</p>
                             )}
                         </div>
-                        <button className={styles["edit-button"]}
+                        <button className={styles["edit-button"]} type="button"
                                 onClick={() => toggleEditMode("email")}>{editModes.email ? "Cancel" : "Edit"}</button>
                     </div>
                     <div className={styles["user-details-item"]}>
@@ -150,7 +150,7 @@ function UserDetails() {
                                 <p className={styles["input"]}>{selectedUser.firstname}</p>
                             )}
                         </div>
-                        <button className={styles["edit-button"]}
+                        <button className={styles["edit-button"]} type="button"
                                 onClick={() => toggleEditMode("firstname")}>{editModes.firstname ? "Cancel" : "Edit"}</button>
                     </div>
                     <div className={styles["user-details-item"]}>
@@ -173,7 +173,7 @@ function UserDetails() {
                                 <p className={styles["input"]}>{selectedUser.lastname}</p>
                             )}
                         </div>
-                        <button className={styles["edit-button"]}
+                        <button className={styles["edit-button"]} type="button"
                                 onClick={() => toggleEditMode("lastname")}>{editModes.lastname ? "Cancel" : "Edit"}</button>
                     </div>
                     <div className={styles["edit-password-wrapper"]}>
@@ -230,7 +230,7 @@ function UserDetails() {
                             </div>
                         )}
                         <button
-                            className={styles["password-edit-button"]}
+                            className={styles["password-edit-button"]} type="button"
                             onClick={() => toggleEditMode("password")}>{editModes.password ? "Cancel" : "Edit"}
                         </button>
                     </div>
