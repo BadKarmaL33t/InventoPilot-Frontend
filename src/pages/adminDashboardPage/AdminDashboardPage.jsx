@@ -6,6 +6,7 @@ import {privateAxios} from "../../api/axios.js";
 import DeleteModal from "../../components/modals/deleteModal/DeleteModal.jsx";
 import {SelectedUserContext} from "../../context/SelectedUserContext.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
+import sortEntity from "../../helpers/sortingFetchedEntity.js";
 
 function AdminDashboard() {
     const [fetchedUsers, setFetchedUsers] = useState([]);
@@ -27,23 +28,7 @@ function AdminDashboard() {
                     signal: controller.signal,
                 });
                 const data = response.data;
-
-                // Sort users based on the selected criteria
-                const sortedUsers = [...data].sort((a, b) => {
-                    const valueA = a[sortBy];
-                    const valueB = b[sortBy];
-
-                    // Handle different types of values
-                    if (valueA === valueB) {
-                        return 0;
-                    }
-
-                    if (typeof valueA === 'string' && typeof valueB === 'string') {
-                        return valueA.localeCompare(valueB);
-                    }
-
-                    return valueA < valueB ? -1 : 1;
-                });
+                const sortedUsers = sortEntity(data, sortBy);
 
                 setFetchedUsers(sortedUsers);
                 setFetchAttempted(true);

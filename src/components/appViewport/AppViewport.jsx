@@ -6,6 +6,9 @@ import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import Register from "../../pages/registerPage/RegisterPage.jsx";
 import UserInfo from "../../pages/userInfoPage/UserInfoPage.jsx";
+import ItemOverview from "../../pages/itemOverviewPage/ItemOverviewPage.jsx";
+import ItemDetails from "../../pages/itemDetailPage/ItemDetailsPage.jsx";
+import NewItem from "../../pages/newItemPage/NewItemPage.jsx";
 
 function AppViewport({ page }) {
     const { isAuth, isAdmin, user } = useContext(AuthContext);
@@ -52,6 +55,28 @@ function AppViewport({ page }) {
                     </div>
                     <div className="content-right-inner-container">
                         <UserInfo />
+                    </div>
+                </div>
+            )}
+
+            { isAuth && (page === "/orders" || page === "/products" || page === "/components" || page === "/raws") && (
+                <div className="content-outer-container">
+                    <div className="content-left-inner-container">
+                        <ItemOverview />
+                    </div>
+                    <div className="content-right-inner-container">
+                        <ItemDetails />
+                    </div>
+                </div>
+            )}
+
+            {isAuth && (page === "/orders/new" || page === "/products/new" || page === "/components/new" || page === "/raws/new") && (
+                <div className="content-outer-container">
+                    <div className="content-left-inner-container">
+                        <ItemOverview />
+                    </div>
+                    <div className="content-right-inner-container">
+                        <NewItem />
                     </div>
                 </div>
             )}

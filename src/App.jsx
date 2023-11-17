@@ -40,12 +40,16 @@ function App() {
                                 <Route path="/dashboard" element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/orders" element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/orders/:id" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/orders/new" element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/products" element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/products/:productName" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/products/new" element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/components" element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/components/:name" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/components/new" element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/raws" element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/raws/:name" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/raws/new" element={<AppViewport page={pagePath}/>}/>
                                 <Route path={`/app/users/${user.username}`} element={<AppViewport page={pagePath}/>}/>
                             </>
                         }
