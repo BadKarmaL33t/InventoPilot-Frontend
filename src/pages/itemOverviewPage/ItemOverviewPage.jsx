@@ -61,7 +61,7 @@ function ItemOverview() {
         const controller = new AbortController();
 
         try {
-            await privateAxios.delete(`/secure/admin/users/${itemToDelete}`, {
+            await privateAxios.delete(`${entityPath}/${itemToDelete}`, {
                 signal: controller.signal,
             });
             console.log(`${itemToDelete} is successfully removed from the database`);
@@ -104,18 +104,6 @@ function ItemOverview() {
                 </button>
             </div>
 
-            {/*private String name;*/}
-            {/*private ProductType type;*/}
-            {/*private int stock;*/}
-            {/*private ProductStatus status;*/}
-            {/*private int sold;*/}
-            {/*private String serialNumber;*/}
-            {/*private int minimalStock;*/}
-            {/*private int maximalStock;*/}
-            {/*private Set<Location> locations;*/}
-            {/*private RawMaterial raw;*/}
-            {/*private Set<ProductComponent> components;*/}
-
             <ul className={styles["all-items"]}>
                 {fetchedItems.map((fetchedItem) => (
                     <li key={fetchedItem.name}>
@@ -133,7 +121,7 @@ function ItemOverview() {
                                             {fetchedItem.name}
                                         </Link>
                                     </h2>
-                                    <p className={styles["item-key-details"]}> {fetchedItem.type} {fetchedItem["stock"]} ({fetchedItem.status})</p>
+                                    <p className={styles["item-key-details"]}> {fetchedItem.type} {fetchedItem.stock} ({fetchedItem.productStatus})</p>
                                 </div>
                             </div>
                             <button

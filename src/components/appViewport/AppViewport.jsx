@@ -9,6 +9,8 @@ import UserInfo from "../../pages/userInfoPage/UserInfoPage.jsx";
 import ItemOverview from "../../pages/itemOverviewPage/ItemOverviewPage.jsx";
 import ItemDetails from "../../pages/itemDetailPage/ItemDetailsPage.jsx";
 import NewItem from "../../pages/newItemPage/NewItemPage.jsx";
+import NewOrder from "../../pages/newOrderPage/NewOrderPage.jsx";
+import OrderDetails from "../../pages/orderDetailPage/OrderDetailsPage.jsx";
 
 function AppViewport({ page }) {
     const { isAuth, isAdmin, user } = useContext(AuthContext);
@@ -70,13 +72,35 @@ function AppViewport({ page }) {
                 </div>
             )}
 
-            {isAuth && (page === "/app/orders/new" || page === "/app/products/new" || page === "/app/components/new" || page === "/app/raws/new") && (
+            {isAuth && (page === "/app/products/new" || page === "/app/components/new" || page === "/app/raws/new") && (
                 <div className="content-outer-container">
                     <div className="content-left-inner-container">
                         <ItemOverview />
                     </div>
                     <div className="content-right-inner-container">
                         <NewItem />
+                    </div>
+                </div>
+            )}
+
+            { isAuth && page === "/app/orders" && (
+                <div className="content-outer-container">
+                    <div className="content-left-inner-container">
+                        <ItemOverview />
+                    </div>
+                    <div className="content-right-inner-container">
+                        <OrderDetails />
+                    </div>
+                </div>
+            )}
+
+            {isAuth && page === "/app/orders/new" && (
+                <div className="content-outer-container">
+                    <div className="content-left-inner-container">
+                        <ItemOverview />
+                    </div>
+                    <div className="content-right-inner-container">
+                        <NewOrder />
                     </div>
                 </div>
             )}

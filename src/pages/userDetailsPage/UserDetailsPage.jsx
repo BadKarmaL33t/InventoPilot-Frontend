@@ -1,12 +1,12 @@
 import styles from "./UserDetailsPage.module.css";
 import {useContext, useEffect, useState} from "react";
-import {SelectedUserContext} from "../../context/SelectedUserContext.jsx";
 import {privateAxios} from "../../api/axios.js";
 import Input from "../../components/input/Input.jsx";
 import PasswordInput from "../../components/passwordInput/PasswordInput.jsx";
 import {useForm} from "react-hook-form";
 import {AuthContext} from "../../context/AuthContext.jsx";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
+import {SelectedUserContext} from "../../context/SelectedUserContext.jsx";
 
 function UserDetails() {
     const {handleSubmit, formState: {errors, isDirty, isValid}, register, watch} = useForm({mode: 'onChange'});
@@ -18,6 +18,7 @@ function UserDetails() {
     const {selectedUser, setSelectedUser} = useContext(SelectedUserContext);
     const {signOut, auth, setAuth, user} = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [editModes, setEditModes] = useState({
         email: false,
@@ -41,7 +42,7 @@ function UserDetails() {
         const controller = new AbortController();
 
         try {
-            await privateAxios.patch(`/secure/admin/users/${selectedUser.username}`, {
+            await privateAxios.patch(`${location.pathname}/${selectedUser.username}`, {
                     ...(editModes.email && email ? {email} : {}),
                     ...(editModes.firstname && firstname ? {firstname} : {}),
                     ...(editModes.lastname && lastname ? {lastname} : {}),
@@ -80,7 +81,7 @@ function UserDetails() {
         if (location.pathname === `/app/users/${user.username}`) {
             setSelectedUser(user);
         }
-    }, [location.pathname]);
+    }, [location.pathname, setSelectedUser, user]);
 
     return (
         <>
