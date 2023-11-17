@@ -5,7 +5,6 @@ import logo from "../../assets/InventoPilotVector.png";
 import {privateAxios} from "../../api/axios.js";
 import DeleteModal from "../../components/modals/deleteModal/DeleteModal.jsx";
 import {SelectedItemContext} from "../../context/SelectedItemContext.jsx";
-import {AuthContext} from "../../context/AuthContext.jsx";
 import sortEntity from "../../helpers/sortingFetchedEntity.js";
 
 function ItemOverview() {
@@ -15,10 +14,9 @@ function ItemOverview() {
     const [itemToDelete, setItemToDelete] = useState(null);
     const [modalOpen, toggleModalOpen] = useState(false);
     const {setSelectedItem} = useContext(SelectedItemContext);
-    const {auth} = useContext(AuthContext)
     const [sortBy, setSortBy] = useState('username');
     const location = useLocation();
-    const entityPath = location.pathname;
+    const [entityPath, setEntityPath] = useState(location.pathname);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -52,7 +50,12 @@ function ItemOverview() {
         if (!fetchAttempted) {
             fetchData().then();
         }
-    }, [fetchAttempted, auth, sortBy, setSelectedItem, entityPath]);
+    }, [fetchAttempted, sortBy, setSelectedItem, entityPath]);
+
+    useEffect(() => {
+        setEntityPath(location.pathname);
+        setFetchAttempted(false);
+    }, [location.pathname]);
 
     async function handleDelete(itemToDelete) {
         const controller = new AbortController();

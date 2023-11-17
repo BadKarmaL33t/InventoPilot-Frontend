@@ -59,7 +59,7 @@ function AppViewport({ page }) {
                 </div>
             )}
 
-            { isAuth && (page === "/orders" || page === "/products" || page === "/components" || page === "/raws") && (
+            { isAuth && (page === "/app/orders" || page === "/app/products" || page === "/app/components" || page === "/app/raws") && (
                 <div className="content-outer-container">
                     <div className="content-left-inner-container">
                         <ItemOverview />
@@ -70,7 +70,7 @@ function AppViewport({ page }) {
                 </div>
             )}
 
-            {isAuth && (page === "/orders/new" || page === "/products/new" || page === "/components/new" || page === "/raws/new") && (
+            {isAuth && (page === "/app/orders/new" || page === "/app/products/new" || page === "/app/components/new" || page === "/app/raws/new") && (
                 <div className="content-outer-container">
                     <div className="content-left-inner-container">
                         <ItemOverview />

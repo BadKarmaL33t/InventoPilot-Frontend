@@ -37,19 +37,19 @@ function App() {
                         <Route path="/" element={<AppViewport page={pagePath}/>}/>
                         {isAuth &&
                             <>
-                                <Route path="/dashboard" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/orders" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/orders/:id" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/orders/new" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/products" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/products/:productName" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/products/new" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/components" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/components/:name" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/components/new" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/raws" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/raws/:name" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/raws/new" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/dashboard" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/orders" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/orders/:id" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/orders/new" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/products" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/products/:productName" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/products/new" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/components" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/components/:name" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/components/new" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/raws" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/raws/:name" element={<AppViewport page={pagePath}/>}/>
+                                <Route path="/app/raws/new" element={<AppViewport page={pagePath}/>}/>
                                 <Route path={`/app/users/${user.username}`} element={<AppViewport page={pagePath}/>}/>
                             </>
                         }

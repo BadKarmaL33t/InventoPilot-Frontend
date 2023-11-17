@@ -26,14 +26,14 @@ function AuthNav() {
                         <li>
                             <NavLink
                                 className={styles["link_nav-menu"]}
-                                to="/dashboard">
+                                to="/app/dashboard">
                                 Dashboard
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
                                 className={styles["link_nav-menu"]}
-                                to="/orders">
+                                to="/app/orders">
                                 Orders
                             </NavLink>
                         </li>
@@ -50,21 +50,21 @@ function AuthNav() {
                                 <li>
                                     <NavLink
                                         className={`${styles["link_nav-menu"]} ${styles["link_nav-menu-item"]}`}
-                                        to="/products">
+                                        to="/app/products">
                                         Products
                                     </NavLink>
                                 </li>
                                 <li>
                                     <NavLink
                                         className={`${styles["link_nav-menu"]} ${styles["link_nav-menu-item"]}`}
-                                        to="/components">
+                                        to="/app/components">
                                         Components
                                     </NavLink>
                                 </li>
                                 <li>
                                     <NavLink
                                         className={`${styles["link_nav-menu"]} ${styles["link_nav-menu-item"]}`}
-                                        to="/raws">
+                                        to="/app/raws">
                                         Raw Materials
                                     </NavLink>
                                 </li>
