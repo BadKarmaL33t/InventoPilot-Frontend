@@ -1,13 +1,11 @@
 import styles from './UserNav.module.css';
-import logo from '../../assets/InventoPilotVector.png';
 import {useContext, useState} from "react";
 import {NavLink} from 'react-router-dom';
 import {AuthContext} from "../../context/AuthContext";
-import {SelectedUserContext} from "../../context/SelectedUserContext.jsx";
+import logo from '../../assets/InventoPilotVector.png';
 
 function AuthNav() {
     const { isAuth, isAdmin, user } = useContext(AuthContext);
-    const { setSelectedUser } = useContext(SelectedUserContext);
     const [showItemList, toggleShowItemList] = useState(false)
 
     function handleItemClick() {
@@ -78,8 +76,7 @@ function AuthNav() {
                         <li>
                             <NavLink
                                 className={styles["link_nav-menu"]}
-                                to={`/app/users/${user.username}`}
-                                onClick={setSelectedUser(user)}>
+                                to={`/app/users/${user.username}`}>
                                 Profile
                             </NavLink>
                         </li>

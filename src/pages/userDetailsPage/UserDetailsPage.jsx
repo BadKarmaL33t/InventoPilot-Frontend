@@ -1,5 +1,5 @@
 import styles from "./UserDetailsPage.module.css";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {SelectedUserContext} from "../../context/SelectedUserContext.jsx";
 import {privateAxios} from "../../api/axios.js";
 import Input from "../../components/input/Input.jsx";
@@ -74,6 +74,13 @@ function UserDetails() {
             console.error("Axios request failed:", error);
         }
     }
+
+    useEffect(() => {
+        // If the current URL is "/app/users/{username}", set the selectedUser to user
+        if (location.pathname === `/app/users/${user.username}`) {
+            setSelectedUser(user);
+        }
+    }, [location.pathname]);
 
     return (
         <>

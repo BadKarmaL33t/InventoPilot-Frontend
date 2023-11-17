@@ -8,7 +8,7 @@ import {SelectedUserContext} from "../../context/SelectedUserContext.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
 
 function AdminDashboard() {
-    const [users, setUsers] = useState([]);
+    const [fetchedUsers, setFetchedUsers] = useState([]);
     const [fetchAttempted, setFetchAttempted] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -45,7 +45,7 @@ function AdminDashboard() {
                     return valueA < valueB ? -1 : 1;
                 });
 
-                setUsers(sortedUsers);
+                setFetchedUsers(sortedUsers);
                 setFetchAttempted(true);
 
                 // Automatically select the top user
@@ -117,8 +117,8 @@ function AdminDashboard() {
             </div>
 
             <ul className={styles["all-users"]}>
-                {users.map((user) => (
-                    <li key={user.username}>
+                {fetchedUsers.map((fetchedUser) => (
+                    <li key={fetchedUser.username}>
                         <article className={styles["all-users__user"]}>
                             <div className={styles["user-container"]}>
                                 <span className={styles["dashboard-img-wrapper"]}>
@@ -128,18 +128,18 @@ function AdminDashboard() {
                                     <h2>
                                         <Link to="/admin/users"
                                               className={styles["link__detail-link"]}
-                                              onClick={() => setSelectedUser(user)}
+                                              onClick={() => setSelectedUser(fetchedUser)}
                                         >
-                                            {user.username}
+                                            {fetchedUser.username}
                                         </Link>
                                     </h2>
-                                    <p className={styles["full-name"]}> {user.firstname} {user.lastname} ({user.role})</p>
+                                    <p className={styles["full-name"]}> {fetchedUser.firstname} {fetchedUser.lastname} ({fetchedUser.role})</p>
                                 </div>
                             </div>
                             <button
                                 className={styles["admin-button-delete"]}
                                 onClick={() => {
-                                    setUserToDelete(user.username);
+                                    setUserToDelete(fetchedUser.username);
                                     toggleModalOpen(true);
                                 }}
                             >

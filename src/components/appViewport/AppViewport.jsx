@@ -45,7 +45,7 @@ function AppViewport({ page }) {
                 </div>
             )}
 
-            { page === `/app/users/${user.username}` && (
+            { user && page === `/app/users/${user.username}` && (
                 <div className="content-outer-container">
                     <div className="content-left-inner-container">
                         <UserDetails />
