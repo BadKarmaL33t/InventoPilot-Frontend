@@ -1,0 +1,72 @@
+.item-details-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-left: 40px;
+}
+
+.item-section-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.item-collection-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 200px;
+}
+
+.item-details-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 8px 0;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.item-img-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px
+}
+
+.item-img {
+    width: 164px;
+    height: 256px;
+    margin: 0 auto;
+}
+
+.label {
+    width: 100%;
+    margin-right: 12px;
+}
+
+.update-userdetails-button {
+    margin-top: 40px;
+}
+
+.form-title {
+    margin-bottom: 40px;
+}
+
+small {
+    color: red;
+    margin-left: 12px;
+}
+
+input {
+    width: 160px;
+}
