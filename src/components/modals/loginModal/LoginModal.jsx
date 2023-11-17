@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import {useForm} from "react-hook-form";
 import Input from "../../input/Input.jsx";
 import PasswordInput from "../../passwordInput/PasswordInput.jsx";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useState} from "react";
 import {AuthContext} from "../../../context/AuthContext.jsx";
 
 function LoginModal({open, modalVisible}) {
@@ -12,15 +12,10 @@ function LoginModal({open, modalVisible}) {
     const {handleSubmit, formState: {errors, isDirty, isValid}, register} = useForm({mode: 'onChange'});
     const navigate = useNavigate();
     const [status, setStatus] = useState("idle");
-    const [errorTimeout, setErrorTimeout] = useState(0);
 
     async function signInHandler(data) {
         const controller = new AbortController();
         setStatus("loading");
-
-        if (errorTimeout) {
-            clearTimeout(errorTimeout);
-        }
 
         try {
             const response = await axios.post(
@@ -40,14 +35,7 @@ function LoginModal({open, modalVisible}) {
 
         } catch (error) {
             setStatus("error");
-            // Set a timeout to clear the error status after 3 seconds
-            const timeoutId = setTimeout(() => {
-                setStatus("idle");
-                modalVisible(false);
-            }, 2000);
 
-            // Save the timeout ID in state
-            setErrorTimeout(timeoutId);
             if (controller.signal.aborted) {
                 console.error('Request cancelled:', error.response?.status);
             } else {
@@ -56,15 +44,6 @@ function LoginModal({open, modalVisible}) {
         }
         controller.abort();
     }
-
-    // Clear the error timeout when the component is unmounted
-    useEffect(() => {
-        return () => {
-            if (errorTimeout) {
-                clearTimeout(errorTimeout);
-            }
-        };
-    }, [errorTimeout]);
 
     return (
         <div className={`${styles["modal-background"]} modal-background-${open ? "visible" : "invisible"}`}>

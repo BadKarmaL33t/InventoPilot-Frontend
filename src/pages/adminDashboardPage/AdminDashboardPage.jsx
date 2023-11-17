@@ -5,6 +5,7 @@ import logo from "../../assets/InventoPilotVector.png";
 import {privateAxios} from "../../api/axios.js";
 import DeleteModal from "../../components/modals/deleteModal/DeleteModal.jsx";
 import {AdminUserContext} from "../../context/AdminUserContext.jsx";
+import {AuthContext} from "../../context/AuthContext.jsx";
 
 function AdminDashboard() {
     const [users, setUsers] = useState([]);
@@ -14,6 +15,8 @@ function AdminDashboard() {
     const [userToDelete, setUserToDelete] = useState(null);
     const [modalOpen, toggleModalOpen] = useState(false);
     const { setSelectedUser } = useContext(AdminUserContext);
+    const { auth } = useContext(AuthContext)
+    const [sortBy, setSortBy] = useState('username');
 
     useEffect(() => {
         const controller = new AbortController();
@@ -24,8 +27,31 @@ function AdminDashboard() {
                     signal: controller.signal,
                 });
                 const data = response.data;
-                setUsers(data);
+
+                // Sort users based on the selected criteria
+                const sortedUsers = [...data].sort((a, b) => {
+                    const valueA = a[sortBy];
+                    const valueB = b[sortBy];
+
+                    // Handle different types of values
+                    if (valueA === valueB) {
+                        return 0;
+                    }
+
+                    if (typeof valueA === 'string' && typeof valueB === 'string') {
+                        return valueA.localeCompare(valueB);
+                    }
+
+                    return valueA < valueB ? -1 : 1;
+                });
+
+                setUsers(sortedUsers);
                 setFetchAttempted(true);
+
+                // Automatically select the top user
+                if (sortedUsers.length > 0) {
+                    setSelectedUser(sortedUsers[0]);
+                }
             } catch (error) {
                 if (controller.signal.aborted) {
                     console.error('Request geannuleerd:', error.message);
@@ -40,7 +66,7 @@ function AdminDashboard() {
         if (!fetchAttempted) {
             fetchData().then();
         }
-    }, [fetchAttempted]);
+    }, [fetchAttempted, auth, sortBy, setSelectedUser]);
 
     async function handleDelete(user) {
         const controller = new AbortController();
@@ -64,6 +90,23 @@ function AdminDashboard() {
 
     return (
         <>
+            <div>
+                <label htmlFor="sortDropdown">Sort by: </label>
+                <select
+                    id="sortDropdown"
+                    onChange={(e) => {
+                        setSortBy(e.target.value);
+                        setFetchAttempted(false); // Set to false to trigger re-fetch
+                    }}
+                    value={sortBy}
+                >
+                    <option value="username">Username</option>
+                    <option value="firstname">First Name</option>
+                    <option value="lastname">Last Name</option>
+                    <option value="role">Role</option>
+                </select>
+            </div>
+
             <ul className={styles["all-users"]}>
                 {users.map((user) => (
                     <li key={user.username}>

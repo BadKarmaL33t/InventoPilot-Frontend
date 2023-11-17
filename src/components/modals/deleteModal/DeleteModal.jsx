@@ -1,6 +1,6 @@
 import styles from './DeleteModal.module.css'
 
-function DeleteModal({ open, modalVisible, handleDelete, post }) {
+function DeleteModal({ open, modalVisible, handleDelete, input }) {
     return (
         <div
             className={`${styles["modal-background"]} modal-background-${open ? "visible" : "invisible"}`}
@@ -17,7 +17,7 @@ function DeleteModal({ open, modalVisible, handleDelete, post }) {
                             ${styles["modal-button-delete"]}`}
                         onClick={() => {
                             modalVisible(false);
-                            handleDelete(post);
+                            handleDelete(input);
                         }}
                     >
                             Delete

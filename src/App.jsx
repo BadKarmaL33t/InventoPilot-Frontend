@@ -11,6 +11,7 @@ import {useEffect, useState} from "react";
 import AppViewport from "./components/appViewport/AppViewport.jsx";
 import {AuthContext} from "./context/AuthContext.jsx";
 import {useContext} from "react";
+import UpdateModal from "./components/modals/updateModal/UpdateModal.jsx";
 
 function App() {
     const { isAuth, isAdmin } = useContext(AuthContext);
@@ -35,6 +36,7 @@ function App() {
                 <div className="content-outer-container">
                     <Routes>
                         <Route path="/signin" element={<LoginModal/>}/>
+                        <Route path="/loading" element={<UpdateModal/>}/>
                         <Route path="/" element={<AppViewport page={pagePath}/>}/>
                         {isAuth &&
                             <>
@@ -75,7 +77,7 @@ export default App;
 }
 
 
-{/*    <Route path="/signin" element={<LoginModal/>}/>*/
+{/*    <Route path="/signin" element={<UpdateModal/>}/>*/
 }
 {/*    <Route*/
 }

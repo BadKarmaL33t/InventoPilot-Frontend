@@ -5,6 +5,7 @@ import {privateAxios} from "../../api/axios.js";
 import Input from "../../components/input/Input.jsx";
 import PasswordInput from "../../components/passwordInput/PasswordInput.jsx";
 import {useForm} from "react-hook-form";
+import {AuthContext} from "../../context/AuthContext.jsx";
 import {useNavigate} from "react-router-dom";
 
 function UserDetails() {
@@ -14,7 +15,8 @@ function UserDetails() {
     const EMAIL_REGEX = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const UN_REGEX = /^[a-zA-Z]*[a-zA-Z0-9-_]{3,23}$/;
     const NAME_REGEX = /^[a-zA-Z-]+$/;
-    const {selectedUser} = useContext(AdminUserContext);
+    const {selectedUser, setSelectedUser} = useContext(AdminUserContext);
+    const {signOut, auth, setAuth, user} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [editModes, setEditModes] = useState({
@@ -39,23 +41,34 @@ function UserDetails() {
         const controller = new AbortController();
 
         try {
-            const response = await privateAxios.patch(`/secure/admin/users/${selectedUser.username}`, {
+            await privateAxios.patch(`/secure/admin/users/${selectedUser.username}`, {
                     ...(editModes.email && email ? {email} : {}),
                     ...(editModes.firstname && firstname ? {firstname} : {}),
                     ...(editModes.lastname && lastname ? {lastname} : {}),
                     ...(editModes.username && username ? {username} : {}),
-                    ...(editModes.password && isPasswordValid && isPasswordMatching ? {password} : {}),
+                    ...(editModes.password && isPasswordValid && isPasswordMatching ? {password} : {})
                 },
                 {
                     signal: controller.signal,
                 });
 
-            console.log("Axios request completed successfully:", response.data);
-
-            // If you're not seeing this log, there might be an issue with the Axios request or the response.
+            if (selectedUser.username === user.username) {
+                setAuth((prevAuth) => ({
+                    ...prevAuth,
+                    user: {
+                        ...(editModes.email && email ? {email} : {}),
+                        ...(editModes.firstname && firstname ? {firstname} : {}),
+                        ...(editModes.lastname && lastname ? {lastname} : {}),
+                        ...(editModes.username && username ? {username} : {}),
+                        ...(editModes.password && isPasswordValid && isPasswordMatching ? {password} : {})
+                    }
+                }));
+                setSelectedUser(auth.user)
+                signOut();
+            }
 
             console.log("Update successful");
-            navigate('/secure/admin/users');
+            navigate("/loading");
         } catch (error) {
             // Log any errors that occurred during the Axios request
             console.error("Axios request failed:", error);

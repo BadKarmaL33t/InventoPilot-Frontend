@@ -136,6 +136,7 @@ function AuthContextProvider({children}) {
         isAuth: auth.isAuth,
         user: auth.user,
         isAdmin: auth.isAdmin,
+        setAuth,
         signIn,
         signOut,
     };
