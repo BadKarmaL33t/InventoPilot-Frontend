@@ -1,8 +1,8 @@
 import { createContext, useState } from 'react';
 
-export const AdminUserContext = createContext();
+export const SelectedUserContext = createContext();
 
-const AdminUserProvider = ({ children }) => {
+const SelectedUserProvider = ({ children }) => {
     const [selectedUser, setSelectedUser] = useState({
         user: {
             email: '',
@@ -20,10 +20,10 @@ const AdminUserProvider = ({ children }) => {
     };
 
     return (
-        <AdminUserContext.Provider value={contextData}>
+        <SelectedUserContext.Provider value={contextData}>
             {children}
-        </AdminUserContext.Provider>
+        </SelectedUserContext.Provider>
     );
 };
 
-export default AdminUserProvider;
+export default SelectedUserProvider;

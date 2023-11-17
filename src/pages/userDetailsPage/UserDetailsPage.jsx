@@ -1,6 +1,6 @@
 import styles from "./UserDetailsPage.module.css";
 import {useContext, useState} from "react";
-import {AdminUserContext} from "../../context/AdminUserContext.jsx";
+import {SelectedUserContext} from "../../context/SelectedUserContext.jsx";
 import {privateAxios} from "../../api/axios.js";
 import Input from "../../components/input/Input.jsx";
 import PasswordInput from "../../components/passwordInput/PasswordInput.jsx";
@@ -15,7 +15,7 @@ function UserDetails() {
     const EMAIL_REGEX = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const UN_REGEX = /^[a-zA-Z]*[a-zA-Z0-9-_]{3,23}$/;
     const NAME_REGEX = /^[a-zA-Z-]+$/;
-    const {selectedUser, setSelectedUser} = useContext(AdminUserContext);
+    const {selectedUser, setSelectedUser} = useContext(SelectedUserContext);
     const {signOut, auth, setAuth, user} = useContext(AuthContext);
     const navigate = useNavigate();
 

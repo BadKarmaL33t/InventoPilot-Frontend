@@ -4,7 +4,7 @@ import {useContext, useEffect, useState} from "react";
 import logo from "../../assets/InventoPilotVector.png";
 import {privateAxios} from "../../api/axios.js";
 import DeleteModal from "../../components/modals/deleteModal/DeleteModal.jsx";
-import {AdminUserContext} from "../../context/AdminUserContext.jsx";
+import {SelectedUserContext} from "../../context/SelectedUserContext.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
 
 function AdminDashboard() {
@@ -14,7 +14,7 @@ function AdminDashboard() {
     const location = useLocation();
     const [userToDelete, setUserToDelete] = useState(null);
     const [modalOpen, toggleModalOpen] = useState(false);
-    const {setSelectedUser} = useContext(AdminUserContext);
+    const {setSelectedUser} = useContext(SelectedUserContext);
     const {auth} = useContext(AuthContext)
     const [sortBy, setSortBy] = useState('username');
 

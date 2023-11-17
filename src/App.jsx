@@ -4,9 +4,6 @@ import {Routes, Route, useLocation} from 'react-router-dom';
 import AuthNav from "./components/authNavigation/AuthNav.jsx";
 import UserNav from "./components/userNavigation/UserNav.jsx"
 import LoginModal from "./components/modals/loginModal/LoginModal.jsx";
-// import Home from "./pages/homepage/Home.jsx";
-// import RegisterPage from "./pages/registerPage/RegisterPage.jsx";
-// import AdminDashboard from "./pages/adminDashboardPage/AdminDashboardPage.jsx";
 import {useEffect, useState} from "react";
 import AppViewport from "./components/appViewport/AppViewport.jsx";
 import {AuthContext} from "./context/AuthContext.jsx";
@@ -14,7 +11,7 @@ import {useContext} from "react";
 import UpdateModal from "./components/modals/updateModal/UpdateModal.jsx";
 
 function App() {
-    const { isAuth, isAdmin } = useContext(AuthContext);
+    const { isAuth, isAdmin, user } = useContext(AuthContext);
     const location = useLocation();
     const [pagePath, setPagePath] = useState(location.pathname);
 
@@ -49,7 +46,7 @@ function App() {
                                 <Route path="/components/:name" element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/raws" element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/raws/:name" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/app/users/:username" element={<AppViewport page={pagePath}/>}/>
+                                <Route path={`/app/users/${user.username}`} element={<AppViewport page={pagePath}/>}/>
                             </>
                         }
                         {isAdmin &&

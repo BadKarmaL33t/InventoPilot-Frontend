@@ -5,9 +5,10 @@ import UserDetails from "../../pages/userDetailsPage/UserDetailsPage.jsx";
 import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import Register from "../../pages/registerPage/RegisterPage.jsx";
+import UserInfo from "../../pages/userInfoPage/UserInfoPage.jsx";
 
 function AppViewport({ page }) {
-    const { isAuth, isAdmin } = useContext(AuthContext);
+    const { isAuth, isAdmin, user } = useContext(AuthContext);
 
     return (
         <>
@@ -40,6 +41,17 @@ function AppViewport({ page }) {
                     </div>
                     <div className="content-right-inner-container">
                         <Register />
+                    </div>
+                </div>
+            )}
+
+            { page === `/app/users/${user.username}` && (
+                <div className="content-outer-container">
+                    <div className="content-left-inner-container">
+                        <UserDetails />
+                    </div>
+                    <div className="content-right-inner-container">
+                        <UserInfo />
                     </div>
                 </div>
             )}
