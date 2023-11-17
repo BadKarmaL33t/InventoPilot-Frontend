@@ -1,0 +1,39 @@
+.register-page-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.label {
+    width: 100%;
+    margin-right: 12px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+input {
+    width: 300px;
+    margin-bottom: 4px;
+    line-height: 24px;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+small {
+    color: red;
+    display: block;
+    width: 300px;
+    margin: 0;
+}

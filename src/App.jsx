@@ -56,6 +56,8 @@ function App() {
                         <>
                             <Route path="/admin/users" element={<AppViewport page={pagePath}/>}/>
                             <Route path="/admin/users/:username" element={<AppViewport page={pagePath}/>}/>
+                            <Route path="/admin/users/register" element={<AppViewport page={pagePath}/>}/>
+
                         </>
                         }
                     </Routes>

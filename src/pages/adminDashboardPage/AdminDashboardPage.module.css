@@ -1,7 +1,7 @@
 .all-users__user {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     background-color: rgba(105, 105, 105, 0.25);
     border-radius: 8px;
@@ -9,14 +9,14 @@
     margin: 8px 0;
 }
 
-.user-details-wrapper {
-    display: block;
-    width: 200px;
-    margin: 0 40px;
+.user-details-container {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
     text-wrap: normal;
 }
 
-.user-wrapper {
+.user-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,6 +26,7 @@
 .dashboard-img-wrapper {
     display: flex;
     justify-content: center;
+    margin: 0 32px 0 12px;
 }
 
 .dashboard-img {
@@ -35,7 +36,7 @@
     margin: 0 auto;
 }
 
-.link__detail-link{
+.link__detail-link {
     text-decoration: none;
 }
 
@@ -52,4 +53,26 @@
 .admin-button-delete:hover {
     background-color: #DB1414;
     color: #FFFFFF;
+}
+
+.admin-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.sort-dropdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.new-user-button {
+    background-color: #FFFFFF;
+    color: var(--purple-dark);
+    width: 100px;
+    padding: 4px 12px;
 }

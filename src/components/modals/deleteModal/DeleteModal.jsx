@@ -7,9 +7,9 @@ function DeleteModal({ open, modalVisible, handleDelete, input }) {
         >
 
             <div className={`${styles["modal-container"]} modal-container-${open ? "opened" : "closed"}`}>
-                <h3 className={styles["modal-title"]}>Are You Sure You Want To Delete This Post?</h3>
+                <h3 className={styles["modal-title"]}>Are You Sure You Want To Delete This Entity?</h3>
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
-                <p className={styles["modal-body"]}>Be aware that deleting a post can't be undone!</p>
+                <p className={styles["modal-body"]}>Be aware that deleting an entity can't be undone!</p>
                 <section className={styles["modal-footer"]}>
                     <button
                         className=

@@ -14,8 +14,8 @@ function AdminDashboard() {
     const location = useLocation();
     const [userToDelete, setUserToDelete] = useState(null);
     const [modalOpen, toggleModalOpen] = useState(false);
-    const { setSelectedUser } = useContext(AdminUserContext);
-    const { auth } = useContext(AuthContext)
+    const {setSelectedUser} = useContext(AdminUserContext);
+    const {auth} = useContext(AuthContext)
     const [sortBy, setSortBy] = useState('username');
 
     useEffect(() => {
@@ -68,21 +68,21 @@ function AdminDashboard() {
         }
     }, [fetchAttempted, auth, sortBy, setSelectedUser]);
 
-    async function handleDelete(user) {
+    async function handleDelete(userToDelete) {
         const controller = new AbortController();
 
         try {
-            await privateAxios.delete(`/secure/admin/users/${user.username}`, {
+            await privateAxios.delete(`/secure/admin/users/${userToDelete}`, {
                 signal: controller.signal,
             });
-            console.log(`${user.username} is successfully removed from the database`);
-            navigate('/secure/admin/users');
+            console.log(`${userToDelete} is successfully removed from the database`);
+            navigate('/loading');
         } catch (error) {
             if (controller.signal.aborted) {
                 console.error('Request cancelled:', error.message);
             } else {
                 console.error(error);
-                navigate("/signin", { state: { from: location }, replace: true });
+                navigate("/signin", {state: {from: location}, replace: true});
             }
         }
         controller.abort();
@@ -90,32 +90,41 @@ function AdminDashboard() {
 
     return (
         <>
-            <div>
-                <label htmlFor="sortDropdown">Sort by: </label>
-                <select
-                    id="sortDropdown"
-                    onChange={(e) => {
-                        setSortBy(e.target.value);
-                        setFetchAttempted(false); // Set to false to trigger re-fetch
-                    }}
-                    value={sortBy}
+            <div className={styles["admin-panel"]}>
+                <div className={styles["sort-dropdown"]}>
+                    <label htmlFor="sort-dropdown-menu">Sort by: </label>
+                    <select
+                        id="sort-dropdown-menu"
+                        onChange={(e) => {
+                            setSortBy(e.target.value);
+                            setFetchAttempted(false); // Set to false to trigger re-fetch
+                        }}
+                        value={sortBy}
+                    >
+                        <option value="username">Username</option>
+                        <option value="firstname">First Name</option>
+                        <option value="lastname">Last Name</option>
+                        <option value="role">Role</option>
+                    </select>
+                </div>
+                <button
+                    className={styles["new-user-button"]}
+                    type="button"
+                    onClick={() => navigate('/admin/users/register')}
                 >
-                    <option value="username">Username</option>
-                    <option value="firstname">First Name</option>
-                    <option value="lastname">Last Name</option>
-                    <option value="role">Role</option>
-                </select>
+                    New User
+                </button>
             </div>
 
             <ul className={styles["all-users"]}>
                 {users.map((user) => (
                     <li key={user.username}>
                         <article className={styles["all-users__user"]}>
-                            <div className={styles["user-wrapper"]}>
-                            <span className={styles["dashboard-img-wrapper"]}>
-                                <img src={logo} alt="profile-img" className={styles["dashboard-img"]}/>
-                            </span>
-                                <div className={styles["user-details-wrapper"]}>
+                            <div className={styles["user-container"]}>
+                                <span className={styles["dashboard-img-wrapper"]}>
+                                    <img src={logo} alt="profile-img" className={styles["dashboard-img"]}/>
+                                </span>
+                                <div className={styles["user-details-container"]}>
                                     <h2>
                                         <Link to="/admin/users"
                                               className={styles["link__detail-link"]}
@@ -126,24 +135,24 @@ function AdminDashboard() {
                                     </h2>
                                     <p className={styles["full-name"]}> {user.firstname} {user.lastname} ({user.role})</p>
                                 </div>
-                                <button
-                                    className={styles["admin-button-delete"]}
-                                    onClick={() => {
-                                        setUserToDelete(user);
-                                        toggleModalOpen(true);
-                                    }}
-                                >
-                                    Delete
-                                </button>
-
-                                {modalOpen &&
-                                    <DeleteModal
-                                        open={modalOpen}
-                                        modalVisible={toggleModalOpen}
-                                        handleDelete={() => handleDelete(userToDelete)}
-                                    />
-                                }
                             </div>
+                            <button
+                                className={styles["admin-button-delete"]}
+                                onClick={() => {
+                                    setUserToDelete(user.username);
+                                    toggleModalOpen(true);
+                                }}
+                            >
+                                Delete
+                            </button>
+
+                            {modalOpen &&
+                                <DeleteModal
+                                    open={modalOpen}
+                                    modalVisible={toggleModalOpen}
+                                    handleDelete={() => handleDelete(userToDelete)}
+                                />
+                            }
                         </article>
                     </li>
                 ))}

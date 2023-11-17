@@ -16,7 +16,7 @@ function UpdateModal({ open, modalVisible }) {
             const timeoutId = setTimeout(() => {
                 setStatus("idle");
                 navigate("/admin/users"); // Navigate to "/" after 3 seconds
-            }, 1000);
+            }, 1);
 
             // Clear the timeout if the component unmounts or status changes
             return () => clearTimeout(timeoutId);

@@ -41,7 +41,7 @@ function AuthNav() {
                         <li>
                             <NavLink
                                 className={styles[`link_nav-menu${!showItemList ? "-active" : ""}`]}
-                                to=""
+                                to={window.location.pathname} // to maintain the exact same look of the menu item
                                 onClick={handleItemClick} >
                                 Items
                             </NavLink>
