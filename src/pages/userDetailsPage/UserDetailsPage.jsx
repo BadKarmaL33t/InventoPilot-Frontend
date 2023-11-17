@@ -71,7 +71,6 @@ function UserDetails() {
             console.log("Update successful");
             navigate("/loading");
         } catch (error) {
-            // Log any errors that occurred during the Axios request
             console.error("Axios request failed:", error);
         }
     }

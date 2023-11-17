@@ -5,12 +5,17 @@ export const SelectedItemContext = createContext();
 const SelectedItemProvider = ({ children }) => {
     const [selectedItem, setSelectedItem] = useState({
         user: {
-            email: '',
-            firstname: '',
-            lastname: '',
-            username: '',
-            password: '',
-            role: '',
+            name: "",
+            productType: "",
+            componentType: "",
+            stock: "",
+            productStatus: "",
+            sold: "",
+            used: "",
+            minimalStock: "",
+            maximalStock: "",
+            serialNumber: "",
+            batchNumber: "",
         },
     });
 
