@@ -76,6 +76,7 @@
 
 .modal-button-delete:hover {
     background-color: #DB1414;
+    border: #BF1D1D;
 }
 
 .modal-button-cancel {

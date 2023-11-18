@@ -40,7 +40,6 @@
 .item-img-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 80px
 }
 
 .item-img {
@@ -69,4 +68,21 @@ small {
 
 input {
     width: 160px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+    margin-top: 80px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--green);
+    border: var(--green);
+    color: white;
 }

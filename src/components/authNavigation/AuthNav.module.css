@@ -73,5 +73,6 @@
 /*}*/
 
 .nav-button-signout:hover {
-    background-color: deepskyblue;
+    background-color: red;
+    border: #BF1D1D;
 }

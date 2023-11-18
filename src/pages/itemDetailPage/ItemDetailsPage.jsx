@@ -308,33 +308,35 @@ function ItemDetails() {
                             </span>
                         </section>
                     </div>
-                    < button className={styles["update-item-details-button"]}
-                             type="submit"
-                             id="update-button"
-                             disabled={!isDirty || !isValid}
-                    >
-                        Update Item
-                    </button>
-                    {location.pathname === "/app/products" &&
-                        <>
-                            <button
-                                className=
-                                    {`${styles["modal-button"]} 
+                    <div className={styles["buttons"]}>
+                        {location.pathname === "/app/products" &&
+                            <>
+                                <button
+                                    className=
+                                        {`${styles["modal-button"]} 
                             ${styles["modal-button-add"]}`}
-                                type="button"
-                                onClick={() => toggleModalOpen(true)}
-                            >
-                                Add items
-                            </button>
+                                    type="button"
+                                    onClick={() => toggleModalOpen(true)}
+                                >
+                                    Add items
+                                </button>
 
-                            {modalOpen &&
-                                <AddToEntityModal
-                                    open={modalOpen}
-                                    modalVisible={toggleModalOpen}
-                                />
-                            }
-                        </>
-                    }
+                                {modalOpen &&
+                                    <AddToEntityModal
+                                        open={modalOpen}
+                                        modalVisible={toggleModalOpen}
+                                    />
+                                }
+                            </>
+                        }
+                        < button className={styles["update-item-details-button"]}
+                                 type="submit"
+                                 id="update-button"
+                                 disabled={!isDirty || !isValid}
+                        >
+                            Update Item
+                        </button>
+                    </div>
                 </form>
             ) : (
                 <p>Something went wrong</p>
