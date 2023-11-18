@@ -76,3 +76,10 @@
     width: 100px;
     padding: 4px 12px;
 }
+
+.delete-error {
+    color: red;
+    font-weight: 300;
+    font-size: 0.75em;
+    width: 200px;
+}

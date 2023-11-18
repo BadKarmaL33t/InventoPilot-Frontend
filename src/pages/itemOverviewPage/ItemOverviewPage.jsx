@@ -17,6 +17,7 @@ function ItemOverview() {
     const [sortBy, setSortBy] = useState('username');
     const location = useLocation();
     const [entityPath, setEntityPath] = useState(location.pathname);
+    const [deleteError, setDeleteError] = useState("");
 
     useEffect(() => {
         const controller = new AbortController();
@@ -59,13 +60,33 @@ function ItemOverview() {
 
     async function handleDelete(itemToDelete) {
         const controller = new AbortController();
-
+        console.log(`${entityPath}/${itemToDelete}`)
         try {
-            await privateAxios.delete(`${entityPath}/${itemToDelete}`, {
+            const checkItem = await privateAxios.get(`${entityPath}/${itemToDelete}`, {
                 signal: controller.signal,
             });
-            console.log(`${itemToDelete} is successfully removed from the database`);
-            navigate('/loading');
+            const { locations, raw, components, products } = checkItem.data;
+
+            // Check if the properties are present and have a length greater than zero
+            if (
+                locations ||
+                products ||
+                components ||
+                raw
+            ) {
+                // If related items exist, do not proceed with deletion
+                setDeleteError(`Cannot delete ${itemToDelete} because related items exist.`);
+                setTimeout(() => {
+                    setDeleteError(null);
+                }, 6000);
+            } else {
+                // If no related items, proceed with deletion
+                await privateAxios.delete(`${entityPath}/${itemToDelete}`, {
+                    signal: controller.signal,
+                });
+                console.log(`${itemToDelete} is successfully removed from the database`);
+                navigate('/loading');
+            }
         } catch (error) {
             if (controller.signal.aborted) {
                 console.error('Request cancelled:', error.message);
@@ -95,6 +116,7 @@ function ItemOverview() {
                         <option value="status">Status</option>
                     </select>
                 </div>
+                <small className={styles["delete-error"]}>{deleteError}</small>
                 <button
                     className={styles["new-item-button"]}
                     type="button"
