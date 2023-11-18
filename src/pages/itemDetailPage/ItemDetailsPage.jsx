@@ -7,7 +7,6 @@ import {useForm} from "react-hook-form";
 import {useLocation, useNavigate} from "react-router-dom";
 import formatEnum from "../../helpers/enumToCamelCase.js";
 import logo from "../../assets/InventoPilotVector.png";
-import LoginModal from "../../components/modals/loginModal/LoginModal.jsx";
 import AddToEntityModal from "../../components/modals/addToEntityModal/AddToEntityModal.jsx";
 
 function ItemDetails() {
@@ -306,6 +305,29 @@ function ItemDetails() {
                             <span className={styles["item-img-wrapper"]}>
                                 <img src={logo} alt="item-img" className={styles["item-img"]}/>
                             </span>
+                            {location.pathname === "/app/products" && (selectedItem.raw || (selectedItem.components && selectedItem.components.length > 0)) && (
+                                <div className={styles["item-relations"]}>
+                                    <h3>Related items:</h3>
+
+                                    {selectedItem.raw && (
+                                        <div>
+                                            <p>Raw Material:</p>
+                                            <p>{selectedItem.raw.name}</p>
+                                        </div>
+                                    )}
+
+                                    {selectedItem.components && selectedItem.components.length > 0 && (
+                                        <div>
+                                            <p>Components:</p>
+                                            <ul>
+                                                {selectedItem["components"].map((component) => (
+                                                    <li key={component.name}>{component.name}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
                         </section>
                     </div>
                     <div className={styles["buttons"]}>

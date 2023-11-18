@@ -1,22 +1,24 @@
-import { createContext, useState } from 'react';
+import {createContext, useState} from 'react';
 
 export const SelectedItemContext = createContext();
 
-const SelectedItemProvider = ({ children }) => {
+const SelectedItemProvider = ({children}) => {
     const [selectedItem, setSelectedItem] = useState({
-        user: {
-            name: "",
-            productType: "",
-            componentType: "",
-            stock: "",
-            productStatus: "",
-            sold: "",
-            used: "",
-            minimalStock: "",
-            maximalStock: "",
-            serialNumber: "",
-            batchNumber: "",
-        },
+        name: "",
+        productType: "",
+        componentType: "",
+        stock: "",
+        productStatus: "",
+        sold: "",
+        used: "",
+        minimalStock: "",
+        maximalStock: "",
+        serialNumber: "",
+        batchNumber: "",
+        locations: [],
+        raw: {},
+        components: [],
+        products: [],
     });
 
     const contextData = {
