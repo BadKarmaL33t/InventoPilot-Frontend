@@ -7,6 +7,8 @@ import {useForm} from "react-hook-form";
 import {useLocation, useNavigate} from "react-router-dom";
 import formatEnum from "../../helpers/enumToCamelCase.js";
 import logo from "../../assets/InventoPilotVector.png";
+import LoginModal from "../../components/modals/loginModal/LoginModal.jsx";
+import AddToEntityModal from "../../components/modals/addToEntityModal/AddToEntityModal.jsx";
 
 function ItemDetails() {
     const {handleSubmit, formState: {errors, isDirty, isValid}, register} = useForm({mode: 'onChange'});
@@ -15,6 +17,8 @@ function ItemDetails() {
     const {selectedItem, setSelectedItem} = useContext(SelectedItemContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [modalOpen, toggleModalOpen] = useState(false);
+
 
     const [editModes, setEditModes] = useState({
         name: false,
@@ -304,13 +308,33 @@ function ItemDetails() {
                             </span>
                         </section>
                     </div>
-                    < button className={styles["update-userdetails-button"]}
+                    < button className={styles["update-item-details-button"]}
                              type="submit"
                              id="update-button"
                              disabled={!isDirty || !isValid}
                     >
                         Update Item
                     </button>
+                    {location.pathname === "/app/products" &&
+                        <>
+                            <button
+                                className=
+                                    {`${styles["modal-button"]} 
+                            ${styles["modal-button-add"]}`}
+                                type="button"
+                                onClick={() => toggleModalOpen(true)}
+                            >
+                                Add items
+                            </button>
+
+                            {modalOpen &&
+                                <AddToEntityModal
+                                    open={modalOpen}
+                                    modalVisible={toggleModalOpen}
+                                />
+                            }
+                        </>
+                    }
                 </form>
             ) : (
                 <p>Something went wrong</p>

@@ -3,12 +3,10 @@ import AppLoaderSplash from "./components/appLoaderSplash/AppLoaderSplash.jsx";
 import {Routes, Route, useLocation} from 'react-router-dom';
 import AuthNav from "./components/authNavigation/AuthNav.jsx";
 import UserNav from "./components/userNavigation/UserNav.jsx"
-import LoginModal from "./components/modals/loginModal/LoginModal.jsx";
 import {useEffect, useState} from "react";
 import AppViewport from "./components/appViewport/AppViewport.jsx";
 import {AuthContext} from "./context/AuthContext.jsx";
 import {useContext} from "react";
-import UpdateModal from "./components/modals/updateModal/UpdateModal.jsx";
 
 function App() {
     const { isAuth, isAdmin, user } = useContext(AuthContext);
@@ -21,7 +19,7 @@ function App() {
 
     return (
         <div className="window-container">
-            <AppLoaderSplash/>
+            {/*<AppLoaderSplash/>*/}
 
             <div className="menu-container">
                 <UserNav/>
@@ -32,8 +30,6 @@ function App() {
                 </div>
                 <div className="content-outer-container">
                     <Routes>
-                        <Route path="/signin" element={<LoginModal/>}/>
-                        <Route path="/loading" element={<UpdateModal/>}/>
                         <Route path="/" element={<AppViewport page={pagePath}/>}/>
                         {isAuth &&
                             <>
