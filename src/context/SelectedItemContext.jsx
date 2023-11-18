@@ -16,7 +16,7 @@ const SelectedItemProvider = ({children}) => {
         serialNumber: "",
         batchNumber: "",
         locationNames: [],
-        rawMaterialName: {},
+        rawMaterialName: "",
         componentNames: [],
         productNames: [],
     });

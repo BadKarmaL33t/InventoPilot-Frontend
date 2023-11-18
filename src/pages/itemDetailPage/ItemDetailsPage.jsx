@@ -18,7 +18,6 @@ function ItemDetails() {
     const location = useLocation();
     const [modalOpen, toggleModalOpen] = useState(false);
 
-
     const [editModes, setEditModes] = useState({
         name: false,
         productType: false,
@@ -75,8 +74,6 @@ function ItemDetails() {
             console.error("Axios request failed:", error);
         }
     }
-
-    console.log(selectedItem);
 
     return (
         <>
