@@ -16,7 +16,6 @@ function AddToEntityModal({open, modalVisible}) {
 
     useEffect(() => {
         const controller = new AbortController();
-        setStatus("loading");
 
         async function fetchData() {
             const sortBy = "name";
@@ -97,21 +96,16 @@ function AddToEntityModal({open, modalVisible}) {
 
     const handlePostRequest = async (item) => {
         const controller = new AbortController();
-        const body = {
-            name: item.name,
-        };
-        let addEntityPath = "/app/products/";
+        let addEntityPath;
 
         if (item.componentType) {
-            addEntityPath = `/app/products/${selectedItem.name}/components`;
+            addEntityPath = `/app/products/${selectedItem.name}/components/${item.name}`;
         } else {
-            addEntityPath = `/app/products/${selectedItem.name}/raws`;
+            addEntityPath = `/app/products/${selectedItem.name}/raw/${item.name}`;
         }
 
-        console.log(body)
-
         try {
-            await privateAxios.patch(addEntityPath, body,
+            await privateAxios.patch(addEntityPath, {},
                 {
                     signal: controller.signal,
                 });
@@ -135,11 +129,21 @@ function AddToEntityModal({open, modalVisible}) {
                     </p>
                 )}
                 {status === "error" && (
-                    <p className={styles["error"]}>
-                        Something went wrong, please try again later.
-                    </p>
+                    <>
+                        <p className={styles["error"]}>
+                            Something went wrong, please try again later.
+                        </p>
+                        <button
+                            className={`${styles["modal-button"]} ${styles["modal-button-cancel"]}`}
+                            onClick={() => modalVisible(false)}
+                        >
+                                <span className={styles["button-text"]}>
+                                    Cancel
+                                </span>
+                        </button>
+                    </>
                 )}
-                {status !== "loading" && (
+                {status === "idle" && (
                     <div>
                         {fetchedItems.map((category) => (
                             <div key={category.title} className={styles["item-list"]}>
@@ -181,7 +185,8 @@ function AddToEntityModal({open, modalVisible}) {
                 )}
             </div>
         </div>
-    );
+    )
+        ;
 }
 
 export default AddToEntityModal;
