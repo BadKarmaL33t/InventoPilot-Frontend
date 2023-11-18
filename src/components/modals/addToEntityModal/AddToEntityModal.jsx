@@ -6,16 +6,13 @@ import {SelectedItemContext} from "../../../context/SelectedItemContext.jsx";
 import sortEntity from "../../../helpers/sortingFetchedEntity.js";
 
 function AddToEntityModal({open, modalVisible}) {
-    const {selectedItem} = useContext(SelectedItemContext);
+    const {selectedItem, setSelectedItem} = useContext(SelectedItemContext);
     const [status, setStatus] = useState("idle");
     const [fetchedItems, setFetchedItems] = useState([]);
     const [fetchAttempted, setFetchAttempted] = useState(false);
-    const {setSelectedItem} = useContext(SelectedItemContext);
     const location = useLocation();
     const entityPath = location.pathname;
     const [checkedItems, setCheckedItems] = useState([]);
-    const [body, setBody] = useState({});
-    const [addEntityPath, setAddEntityPath] = useState("");
 
     useEffect(() => {
         const controller = new AbortController();
@@ -82,6 +79,7 @@ function AddToEntityModal({open, modalVisible}) {
     };
 
     const handleAddItems = async () => {
+        setStatus("loading");
         // Loop through selected items and send post requests
         for (const checkedItem of checkedItems) {
             try {
@@ -93,31 +91,38 @@ function AddToEntityModal({open, modalVisible}) {
             }
         }
         modalVisible(false);
-        setStatus("idle");
         setSelectedItem(selectedItem);
+        setStatus("idle");
     };
 
     const handlePostRequest = async (item) => {
+        const controller = new AbortController();
+        const body = {
+            name: item.name,
+        };
+        let addEntityPath = "/app/products/";
 
         if (item.componentType) {
-            setBody({
-                name: item.name,
-
-            });
-            setAddEntityPath(`/app/products/${item.name}/components`);
+            addEntityPath = `/app/products/${selectedItem.name}/components`;
         } else {
-            setBody({
-                name: item.name,
-            });
-            setAddEntityPath(`/app/products/${item.name}/raws`);
+            addEntityPath = `/app/products/${selectedItem.name}/raws`;
         }
 
+        console.log(body)
 
         try {
-            await privateAxios.patch(addEntityPath, body);
+            await privateAxios.patch(addEntityPath, body,
+                {
+                    signal: controller.signal,
+                });
             console.log(`Item ${item.name} added successfully!`);
         } catch (error) {
-            console.error(`Error adding item ${item.name}:`, error);
+            if (controller.signal.aborted) {
+                console.error('Request geannuleerd:', error.message);
+            } else {
+                console.error(`Error adding item ${item.name}:`, error);
+            }
+            controller.abort();
         }
     };
 
