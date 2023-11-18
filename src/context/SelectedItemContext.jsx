@@ -15,10 +15,10 @@ const SelectedItemProvider = ({children}) => {
         maximalStock: "",
         serialNumber: "",
         batchNumber: "",
-        locations: [],
-        raw: {},
-        components: [],
-        products: [],
+        locationNames: [],
+        rawMaterialName: {},
+        componentNames: [],
+        productNames: [],
     });
 
     const contextData = {

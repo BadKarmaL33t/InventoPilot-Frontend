@@ -76,6 +76,8 @@ function ItemDetails() {
         }
     }
 
+    console.log(selectedItem);
+
     return (
         <>
             {selectedItem ? (
@@ -305,23 +307,23 @@ function ItemDetails() {
                             <span className={styles["item-img-wrapper"]}>
                                 <img src={logo} alt="item-img" className={styles["item-img"]}/>
                             </span>
-                            {location.pathname === "/app/products" && (selectedItem.raw || (selectedItem.components && selectedItem.components.length > 0)) && (
+                            {location.pathname === "/app/products" && (selectedItem.rawMaterialName || (selectedItem.componentNames && selectedItem.componentNames.length > 0)) && (
                                 <div className={styles["item-relations"]}>
                                     <h3>Related items:</h3>
 
-                                    {selectedItem.raw && (
+                                    {selectedItem.rawMaterialName && (
                                         <div>
                                             <p>Raw Material:</p>
-                                            <p>{selectedItem.raw.name}</p>
+                                            <p className={styles["product-relation"]}>{selectedItem.rawMaterialName}</p>
                                         </div>
                                     )}
 
-                                    {selectedItem.components && selectedItem.components.length > 0 && (
+                                    {selectedItem.componentNames && selectedItem.componentNames.length > 0 && (
                                         <div>
                                             <p>Components:</p>
                                             <ul>
-                                                {selectedItem["components"].map((component) => (
-                                                    <li key={component.name}>{component.name}</li>
+                                                {selectedItem.componentNames.map((componentName) => (
+                                                    <li key={componentName} className={styles["product-relation"]}>{componentName}</li>
                                                 ))}
                                             </ul>
                                         </div>
