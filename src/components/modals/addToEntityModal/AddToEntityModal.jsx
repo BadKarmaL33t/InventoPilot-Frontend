@@ -6,15 +6,16 @@ import {SelectedItemContext} from "../../../context/SelectedItemContext.jsx";
 import sortEntity from "../../../helpers/sortingFetchedEntity.js";
 
 function AddToEntityModal({open, modalVisible}) {
-    const { selectedItem } = useContext(SelectedItemContext);
+    const {selectedItem} = useContext(SelectedItemContext);
     const [status, setStatus] = useState("idle");
     const [fetchedItems, setFetchedItems] = useState([]);
     const [fetchAttempted, setFetchAttempted] = useState(false);
     const {setSelectedItem} = useContext(SelectedItemContext);
     const location = useLocation();
     const entityPath = location.pathname;
-    const addToEntityPath = `${location.pathname}/${selectedItem}`;
+    const addToEntityPath = `${location.pathname}/${selectedItem.name}`;
     const [checkedItems, setCheckedItems] = useState([]);
+    const [body, setBody] = useState({});
 
     useEffect(() => {
         const controller = new AbortController();
@@ -78,14 +79,14 @@ function AddToEntityModal({open, modalVisible}) {
             // Add the item if not already selected
             setCheckedItems((prevCheckedItems) => [...prevCheckedItems, item]);
         }
+        console.log(item)
     };
 
     const handleAddItems = async () => {
         // Loop through selected items and send post requests
         for (const checkedItem of checkedItems) {
             try {
-                // Assuming you have a function to handle the post request
-                // await handlePostRequest(addToEntityPath, checkedItem);        deze functie moet nog afgemaakt worden, eerst log testen
+                await handlePostRequest(addToEntityPath, checkedItem);
                 console.log(addToEntityPath, checkedItem)
 
                 console.log(`Item ${checkedItem.name} added successfully!`);
@@ -96,6 +97,26 @@ function AddToEntityModal({open, modalVisible}) {
         modalVisible(false);
         setStatus("idle");
         setSelectedItem(selectedItem);
+    };
+
+    const handlePostRequest = async (path, item) => {
+        console.log("dit is het item: " + item);
+
+        // if (matchingItem && matchingItem.title === "Raw") {
+        //     setBody({
+        //         name: item.name,
+        //
+        //     });
+        //
+        //     console.log(body)
+
+            // try {
+            //     await privateAxios.post(path, body);
+            //     console.log(`Item ${item.name} added successfully!`);
+            // } catch (error) {
+            //     console.error(`Error adding item ${item.name}:`, error);
+            // }
+        // }
     };
 
     return (
