@@ -13,9 +13,9 @@ function AddToEntityModal({open, modalVisible}) {
     const {setSelectedItem} = useContext(SelectedItemContext);
     const location = useLocation();
     const entityPath = location.pathname;
-    const addToEntityPath = `${location.pathname}/${selectedItem.name}`;
     const [checkedItems, setCheckedItems] = useState([]);
     const [body, setBody] = useState({});
+    const [addEntityPath, setAddEntityPath] = useState("");
 
     useEffect(() => {
         const controller = new AbortController();
@@ -79,15 +79,13 @@ function AddToEntityModal({open, modalVisible}) {
             // Add the item if not already selected
             setCheckedItems((prevCheckedItems) => [...prevCheckedItems, item]);
         }
-        console.log(item)
     };
 
     const handleAddItems = async () => {
         // Loop through selected items and send post requests
         for (const checkedItem of checkedItems) {
             try {
-                await handlePostRequest(addToEntityPath, checkedItem);
-                console.log(addToEntityPath, checkedItem)
+                await handlePostRequest(checkedItem);
 
                 console.log(`Item ${checkedItem.name} added successfully!`);
             } catch (error) {
@@ -99,24 +97,28 @@ function AddToEntityModal({open, modalVisible}) {
         setSelectedItem(selectedItem);
     };
 
-    const handlePostRequest = async (path, item) => {
-        console.log("dit is het item: " + item);
+    const handlePostRequest = async (item) => {
 
-        // if (matchingItem && matchingItem.title === "Raw") {
-        //     setBody({
-        //         name: item.name,
-        //
-        //     });
-        //
-        //     console.log(body)
+        if (item.componentType) {
+            setBody({
+                name: item.name,
 
-            // try {
-            //     await privateAxios.post(path, body);
-            //     console.log(`Item ${item.name} added successfully!`);
-            // } catch (error) {
-            //     console.error(`Error adding item ${item.name}:`, error);
-            // }
-        // }
+            });
+            setAddEntityPath(`/app/products/${item.name}/components`);
+        } else {
+            setBody({
+                name: item.name,
+            });
+            setAddEntityPath(`/app/products/${item.name}/raws`);
+        }
+
+
+        try {
+            await privateAxios.patch(addEntityPath, body);
+            console.log(`Item ${item.name} added successfully!`);
+        } catch (error) {
+            console.error(`Error adding item ${item.name}:`, error);
+        }
     };
 
     return (
