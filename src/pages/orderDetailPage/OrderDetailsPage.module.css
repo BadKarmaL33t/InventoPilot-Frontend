@@ -9,10 +9,10 @@
 
 .order-section-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 24px;
+    width: 80%;
 }
 
 .order-collection-container {
