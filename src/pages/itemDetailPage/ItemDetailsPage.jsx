@@ -70,8 +70,8 @@ function ItemDetails() {
                 });
 
             console.log("Update successful");
-            navigate("/loading");
             setSelectedItem(selectedItem);
+            navigate("/loading");
         } catch (error) {
             console.error("Axios request failed:", error);
         }

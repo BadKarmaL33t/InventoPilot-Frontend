@@ -29,7 +29,7 @@ function AddToEntityModal({open, modalVisible}) {
                     fetchPaths = ["/app/components", "/app/raws"];
                     entityTitles = ["Components", "Raws"];
                 } else if (entityPath === "/app/orders") {
-                    fetchPaths = ["/app/orders"];
+                    fetchPaths = ["/app/products"];
                     entityTitles = ["Products"];
                 } else if (entityPath === "/app/locations") {
                     fetchPaths = ["/app/products", "/app/components", "/app/raws"];
