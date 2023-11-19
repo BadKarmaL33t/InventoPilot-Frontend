@@ -91,9 +91,9 @@ function AddToEntityModal({open, modalVisible}) {
             }
         }
         modalVisible(false);
-        setSelectedItem(selectedItem);
         setStatus("idle");
         navigate("/loading")
+        setSelectedItem(selectedItem);
     };
 
     const handlePostRequest = async (item) => {

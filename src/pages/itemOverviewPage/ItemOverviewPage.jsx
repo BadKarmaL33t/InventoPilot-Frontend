@@ -13,7 +13,7 @@ function ItemOverview() {
     const navigate = useNavigate();
     const [itemToDelete, setItemToDelete] = useState(null);
     const [modalOpen, toggleModalOpen] = useState(false);
-    const {setSelectedItem} = useContext(SelectedItemContext);
+    const {selectedItem, setSelectedItem} = useContext(SelectedItemContext);
     const [sortBy, setSortBy] = useState('username');
     const location = useLocation();
     const [entityPath, setEntityPath] = useState(location.pathname);
@@ -34,7 +34,7 @@ function ItemOverview() {
                 setFetchAttempted(true);
 
                 // Automatically select the top user
-                if (sortedItems.length > 0) {
+                if (sortedItems.length > 0 && sortedItems.indexOf(selectedItem) !== -1) {
                     setSelectedItem(sortedItems[0]);
                 }
             } catch (error) {
@@ -51,7 +51,7 @@ function ItemOverview() {
         if (!fetchAttempted) {
             fetchData().then();
         }
-    }, [fetchAttempted, sortBy, setSelectedItem, entityPath]);
+    }, [fetchAttempted, sortBy, selectedItem, setSelectedItem, entityPath]);
 
     useEffect(() => {
         setEntityPath(location.pathname);
