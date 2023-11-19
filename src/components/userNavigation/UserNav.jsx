@@ -1,72 +1,107 @@
 import styles from './UserNav.module.css';
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {NavLink} from 'react-router-dom';
 import {AuthContext} from "../../context/AuthContext";
 import logo from '../../assets/InventoPilotVector.png';
+import {SelectedItemContext} from "../../context/SelectedItemContext.jsx";
 
 function AuthNav() {
-    const {isAuth, isAdmin, user} = useContext(AuthContext);
+    const { isAuth, isAdmin, user } = useContext(AuthContext);
+    const { setSelectedItem, emptySelectedItem } = useContext(SelectedItemContext);
+    const [showItemList, toggleShowItemList] = useState(false)
+
+    function handleItemClick() {
+        toggleShowItemList(!showItemList)
+    }
+
+    function handleOrderClick() {
+        setSelectedItem(emptySelectedItem);
+    }
 
     return (
         <nav className={styles["user-nav-container"]}>
-            <ul className={styles["nav-list"]}>
-                {isAuth ?
+            <ul className={styles["user-nav-list"]}>
+                { isAuth ?
                     <>
-                        {/*<span className={styles["menu-img-wrapper"]}>*/}
-                        {/*    <img src={logo} alt="profile-img" className={styles["menu-img"]}/>*/}
-                        {/*</span>*/}
+                        <span className={styles["menu-img-wrapper"]}>
+                            <img src={logo} alt="profile-img" className={styles["menu-img"]}/>
+                        </span>
                         <li>
-                            <h2>Navigation</h2>
+                            <p className={styles["menu-title"]}>Navigation</p>
                         </li>
+                        {/*To be added later:*/}
+                        {/*<li>*/}
+                        {/*    <NavLink*/}
+                        {/*        className={styles["link_nav-menu"]}*/}
+                        {/*        to="/app/dashboard">*/}
+                        {/*        Dashboard*/}
+                        {/*    </NavLink>*/}
+                        {/*</li>*/}
                         <li>
                             <NavLink
                                 className={styles["link_nav-menu"]}
-                                to="/dashboard">
-                                Dashboard
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                className={styles["link_nav-menu"]}
-                                to="/orders">
+                                to="/app/orders"
+                                onClick={handleOrderClick} >
                                 Orders
                             </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                className={styles["link_nav-menu"]}
-                                to="/items">
+                                className={styles[`link_nav-menu${!showItemList ? "-active" : ""}`]}
+                                to={window.location.pathname} // to maintain the exact same look of the menu item
+                                onClick={handleItemClick} >
                                 Items
                             </NavLink>
                         </li>
+                        {showItemList &&
+                            <>
+                                <li>
+                                    <NavLink
+                                        className={`${styles["link_nav-menu"]} ${styles["link_nav-menu-item"]}`}
+                                        to="/app/products">
+                                        Products
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
+                                        className={`${styles["link_nav-menu"]} ${styles["link_nav-menu-item"]}`}
+                                        to="/app/components">
+                                        Components
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
+                                        className={`${styles["link_nav-menu"]} ${styles["link_nav-menu-item"]}`}
+                                        to="/app/raws">
+                                        Raw Materials
+                                    </NavLink>
+                                </li>
+                            </>
+                        }
                         <li>
-                            <h2>User</h2>
+                            <p className={styles["menu-title"]}>User</p>
                         </li>
                         <li>
                             <NavLink
                                 className={styles["link_nav-menu"]}
-                                to={`/users/${user.username}`}>
+                                to={`/app/users/${user.username}`}>
                                 Profile
                             </NavLink>
                         </li>
                     </>
                     :
                     <>
-                        {/*<span className={styles["menu-img"]}>*/}
-                        {/*    <img src={logo} alt="company-logo"/>*/}
-                        {/*</span>*/}
                     </>
                 }
-                {
-                    isAdmin ?
+                { isAdmin ?
                         <>
                             <li>
-                                <h2>Admin</h2>
+                                <p className={styles["menu-title"]}>Admin</p>
                             </li>
                             <li>
                                 <NavLink
                                     className={styles["link_nav-menu"]}
-                                    to="/secure/admin/users">
+                                    to="/admin/users">
                                     Admin Dashboard
                                 </NavLink>
                             </li>

@@ -1,15 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&display=swap');
+
 #root {
-  background: rgb(39,38,38);
-  background: -moz-linear-gradient(115deg, rgba(39,38,38,1) 0%, rgba(49,18,87,1) 28%, rgba(99,42,168,1) 80%, rgba(153,69,255,1) 95%, rgba(20,241,149,1) 100%);
-  background: -webkit-linear-gradient(115deg, rgba(39,38,38,1) 0%, rgba(49,18,87,1) 28%, rgba(99,42,168,1) 80%, rgba(153,69,255,1) 95%, rgba(20,241,149,1) 100%);
-  background: linear-gradient(115deg, rgba(39,38,38,1) 0%, rgba(49,18,87,1) 28%, rgba(99,42,168,1) 80%, rgba(153,69,255,1) 95%, rgba(20,241,149,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#272626",endColorstr="#14f195",GradientType=1);
-  --purple: #9945FF;
+  background: rgb(39, 38, 38);
+  background: -moz-linear-gradient(115deg, rgba(39, 38, 38, 1) 0%, rgba(49, 18, 87, 1) 28%, rgba(99, 42, 168, 1) 80%, rgba(153, 69, 255, 1) 95%, rgba(20, 241, 149, 1) 100%);
+  background: -webkit-linear-gradient(115deg, rgba(39, 38, 38, 1) 0%, rgba(49, 18, 87, 1) 28%, rgba(99, 42, 168, 1) 80%, rgba(153, 69, 255, 1) 95%, rgba(20, 241, 149, 1) 100%);
+  background: linear-gradient(115deg, rgba(39, 38, 38, 1) 0%, rgba(49, 18, 87, 1) 28%, rgba(99, 42, 168, 1) 80%, rgba(153, 69, 255, 1) 95%, rgba(20, 241, 149, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#272626", endColorstr="#14f195", GradientType=1);
+  --purple: #8c3cff;
   --purple-dark: #311257;
   --purple-tile: rgba(49, 18, 87, 0.33);
   --green: #14F195;
   --grey-super-dark: #1C1C1C;
   --grey-dark: rgba(12, 12, 12, 0.5);
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
 }
 
 .window-container {
@@ -24,14 +28,15 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
-  width: 20vw;
+  align-items: center;
+  width: 10vw;
+  height: 100vh;
+  background-color: var(--grey-dark);
 }
 
 .page-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   width: 90vw;
   height: 100vh;
 }
@@ -43,6 +48,7 @@
   align-items: center;
   width: 90vw;
   height: 5vh;
+  background-color: var(--purple-dark);
 }
 
 .content-outer-container {
@@ -52,25 +58,28 @@
   align-items: center;
   width: 90vw;
   height: 95vh;
-  border: 2px solid red;
 }
 
 .content-left-inner-container {
   display: flex;
   flex-direction: column;
-  height: calc(90vh - 48px);
-  width: 35vw;
+  height: calc(95vh - 40px);
+  width: calc(40vw - 32px);
   padding: 24px;
   background-color: var(--purple-tile);
   border-radius: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .content-right-inner-container {
   display: flex;
   flex-direction: column;
-  height: calc(90vh - 48px);
-  width: 45vw;
+  height: calc(95vh - 40px);
+  width: calc(50vw - 32px);
   padding: 24px;
   background-color: var(--purple-tile);
   border-radius: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

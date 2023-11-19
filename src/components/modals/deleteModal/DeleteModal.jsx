@@ -1,17 +1,15 @@
 import styles from './DeleteModal.module.css'
-import trash from "../../../assets/deleteicon.png";
 
-function DeleteModal({ open, modalVisible, handleDelete, post }) {
+function DeleteModal({ open, modalVisible, handleDelete, input }) {
     return (
-        // background
         <div
             className={`${styles["modal-background"]} modal-background-${open ? "visible" : "invisible"}`}
         >
-            {/* modal */}
+
             <div className={`${styles["modal-container"]} modal-container-${open ? "opened" : "closed"}`}>
-                <h3 className={styles["modal-title"]}>Are You Sure You Want To Delete This Post?</h3>
+                <h3 className={styles["modal-title"]}>Are You Sure You Want To Delete This Entity?</h3>
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
-                <p className={styles["modal-body"]}>Be aware that deleting a post can't be undone!</p>
+                <p className={styles["modal-body"]}>Be aware that deleting an entity can't be undone!</p>
                 <section className={styles["modal-footer"]}>
                     <button
                         className=
@@ -19,15 +17,10 @@ function DeleteModal({ open, modalVisible, handleDelete, post }) {
                             ${styles["modal-button-delete"]}`}
                         onClick={() => {
                             modalVisible(false);
-                            handleDelete(post);
+                            handleDelete(input);
                         }}
                     >
-                        <span className={styles["button-img-wrapper"]}>
-                            <img src={trash} alt="trash" className={styles["button-img"]}/>
-                        </span>
-                        <span className={styles["button-text"]}>
                             Delete
-                        </span>
                     </button>
                     <button
                         className=
@@ -44,3 +37,5 @@ function DeleteModal({ open, modalVisible, handleDelete, post }) {
         </div>
     );
 }
+
+export default DeleteModal;

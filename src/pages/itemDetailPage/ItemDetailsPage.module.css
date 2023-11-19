@@ -1,0 +1,124 @@
+.item-details-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-left: 40px;
+}
+
+.item-section-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.item-collection-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 200px;
+}
+
+.item-details-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 8px 0;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.item-img-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.item-img {
+    width: 200px;
+    height: 264px;
+    margin: 0 auto;
+}
+
+.item-relations {
+    border: 2px solid var(--purple);
+    border-radius: 8px;
+    max-height: 140px;
+    min-height: 100px;
+    width: 100%;
+    margin-top: 24px;
+    padding: 8px 16px;
+    overflow-y: auto;
+}
+
+.product-relation {
+    color: var(--green);
+}
+
+.label {
+    width: 100%;
+    margin-right: 12px;
+}
+
+.update-userdetails-button {
+    margin-top: 40px;
+}
+
+.form-title {
+    margin-bottom: 40px;
+}
+
+small {
+    color: red;
+    margin-left: 12px;
+}
+
+input {
+    width: 160px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    gap: 30px;
+    margin-top: 32px;
+}
+
+.buttons-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--green);
+    border: var(--green);
+    color: white;
+}
+
+.modal-button-delete {
+    background-color: #BF1D1D;
+    border: #BF1D1D;
+    color: white;
+    padding: 6px
+}
+
+.modal-button-delete:hover {
+    background-color: red;
+    border: #BF1D1D;
+    color: white;
+}

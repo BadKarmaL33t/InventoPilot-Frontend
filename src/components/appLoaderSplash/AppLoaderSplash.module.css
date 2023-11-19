@@ -1,6 +1,5 @@
 .page-loader {
     position: fixed;
-    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
@@ -8,6 +7,7 @@
     background: rgb(33,0,74);
     background: linear-gradient(15deg, rgba(33,0,74,1) 0%, rgba(79,26,143,1) 16%, rgba(115,47,197,1) 32%, rgba(153,69,255,1) 55%, rgba(100,119,195,1) 74%, rgba(34,181,120,1) 100%);
     transition: 4s;
+    z-index: 10;
 }
 
 .text-container {

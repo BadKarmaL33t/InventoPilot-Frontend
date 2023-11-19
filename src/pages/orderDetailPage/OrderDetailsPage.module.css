@@ -1,0 +1,110 @@
+.order-details-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-left: 40px;
+}
+
+.order-section-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%;
+}
+
+.order-collection-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 200px;
+}
+
+.order-details-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 8px 0;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.order-img-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.order-img {
+    width: 200px;
+    height: 264px;
+    margin: 0 auto;
+}
+
+.label {
+    width: 100%;
+    margin-right: 12px;
+}
+
+.update-order-details-button {
+    margin-top: 40px;
+}
+
+.form-title {
+    margin-bottom: 40px;
+}
+
+small {
+    color: red;
+    margin-left: 12px;
+}
+
+/*input {*/
+/*    width: 160px;*/
+/*}*/
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    gap: 30px;
+    margin-top: 32px;
+}
+
+.buttons-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--green);
+    border: var(--green);
+    color: white;
+}
+
+.modal-button-delete {
+    background-color: #BF1D1D;
+    border: #BF1D1D;
+    color: white;
+    padding: 6px
+}
+
+.modal-button-delete:hover {
+    background-color: red;
+    border: #BF1D1D;
+    color: white;
+}

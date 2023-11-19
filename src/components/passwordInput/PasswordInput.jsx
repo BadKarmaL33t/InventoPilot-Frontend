@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import styles from "../input/Input.module.css";
+import passwordStrengthChecker from "../../helpers/passwordStrengthChecker.js";
 
 function PasswordInput({ id, name, register, errors, validationParams }) {
     const [passwordStrength, setPasswordStrength] = useState("");
@@ -7,19 +8,6 @@ function PasswordInput({ id, name, register, errors, validationParams }) {
     useEffect(() => {
         register(name);
     }, [name, register, errors]);
-
-    function passwordStrengthChecker(v) {
-        const strongRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9';<>&|/\\]).{12,24}$/;
-        const mediumRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9';<>&|/\\]).{10,24}$/;
-
-        if (strongRegex.test(v)) {
-            return "Strong";
-        } else if (mediumRegex.test(v)) {
-            return "Average";
-        } else {
-            return "Weak";
-        }
-    }
 
     const handleInputChange = (e) => {
         const value = e.target.value;
@@ -33,10 +21,12 @@ function PasswordInput({ id, name, register, errors, validationParams }) {
                 type="password"
                 id={id}
                 {...register(name, validationParams)}
-                onInput={name === "password" ? handleInputChange : undefined}
+                onInput={id === "password-field" ? handleInputChange : undefined}
             />
-            <p className="strengthCheck">{passwordStrength && <span>{`${passwordStrength} password`}</span>}</p>
             {errors[name] && <small className={styles["errors"]}>{errors[name].message}</small>}
+            { id === "password-field" &&
+                <p className={styles["password-strength"]}>{passwordStrength && <span>{`${passwordStrength} password`}</span>}</p>
+            }
         </div>
     )
 }
