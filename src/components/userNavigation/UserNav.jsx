@@ -23,13 +23,14 @@ function AuthNav() {
                         <li>
                             <p className={styles["menu-title"]}>Navigation</p>
                         </li>
-                        <li>
-                            <NavLink
-                                className={styles["link_nav-menu"]}
-                                to="/app/dashboard">
-                                Dashboard
-                            </NavLink>
-                        </li>
+                        {/*To be added later:*/}
+                        {/*<li>*/}
+                        {/*    <NavLink*/}
+                        {/*        className={styles["link_nav-menu"]}*/}
+                        {/*        to="/app/dashboard">*/}
+                        {/*        Dashboard*/}
+                        {/*    </NavLink>*/}
+                        {/*</li>*/}
                         <li>
                             <NavLink
                                 className={styles["link_nav-menu"]}

@@ -1,0 +1,78 @@
+.all-orders__order {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(105, 105, 105, 0.25);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 8px 0;
+}
+
+.order-details-container {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    text-wrap: normal;
+}
+
+.order-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-img-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0 32px 0 12px;
+}
+
+.order-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.link__detail-link {
+    text-decoration: none;
+}
+
+.order-key-details {
+    color: white;
+    font-weight: 100;
+}
+
+.order-button-delete {
+    background-color: #BF1D1D;
+    color: #FFFFFF;
+}
+
+.order-button-delete:hover {
+    background-color: #DB1414;
+    color: #FFFFFF;
+}
+
+.order-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.sort-dropdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.new-order-button {
+    background-color: #FFFFFF;
+    color: var(--purple-dark);
+    width: 100px;
+    padding: 4px 12px;
+}

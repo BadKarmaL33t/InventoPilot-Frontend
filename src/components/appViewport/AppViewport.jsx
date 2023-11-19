@@ -11,6 +11,7 @@ import ItemDetails from "../../pages/itemDetailPage/ItemDetailsPage.jsx";
 import NewItem from "../../pages/newItemPage/NewItemPage.jsx";
 import NewOrder from "../../pages/newOrderPage/NewOrderPage.jsx";
 import OrderDetails from "../../pages/orderDetailPage/OrderDetailsPage.jsx";
+import OrderOverview from "../../pages/orderOverviewPage/OrderOverviewPage.jsx";
 
 function AppViewport({ page }) {
     const { isAuth, isAdmin, user } = useContext(AuthContext);
@@ -61,7 +62,7 @@ function AppViewport({ page }) {
                 </div>
             )}
 
-            { isAuth && (page === "/app/orders" || page === "/app/products" || page === "/app/components" || page === "/app/raws") && (
+            { isAuth && (page === "/app/products" || page === "/app/components" || page === "/app/raws") && (
                 <div className="content-outer-container">
                     <div className="content-left-inner-container">
                         <ItemOverview />
@@ -86,7 +87,7 @@ function AppViewport({ page }) {
             { isAuth && page === "/app/orders" && (
                 <div className="content-outer-container">
                     <div className="content-left-inner-container">
-                        <ItemOverview />
+                        <OrderOverview />
                     </div>
                     <div className="content-right-inner-container">
                         <OrderDetails />
@@ -97,7 +98,7 @@ function AppViewport({ page }) {
             {isAuth && page === "/app/orders/new" && (
                 <div className="content-outer-container">
                     <div className="content-left-inner-container">
-                        <ItemOverview />
+                        <OrderOverview />
                     </div>
                     <div className="content-right-inner-container">
                         <NewOrder />

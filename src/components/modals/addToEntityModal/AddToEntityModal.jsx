@@ -105,6 +105,7 @@ function AddToEntityModal({open, modalVisible}) {
     const handleAddRequest = async (item) => {
         const controller = new AbortController();
         let addEntityPath;
+        let body = null;
 
         if (entityPath === "/app/products" && item.componentType) {
             addEntityPath = `/app/products/${selectedItem.name}/components/${item.name}`;
@@ -112,12 +113,13 @@ function AddToEntityModal({open, modalVisible}) {
             addEntityPath = `/app/products/${selectedItem.name}/raw/${item.name}`;
         } else if (entityPath === "/app/orders") {
             addEntityPath = `/app/orders/${selectedItem.id}/items/${item.id}`;
+            body = {orderId: item.orderId, productName: item.productName, quantity: item.quantity};
         } else if (entityPath === "/app/locations") {
             addEntityPath = `/app/locations/${selectedItem.department}/items/${item.name}`;
         }
 
         try {
-            await privateAxios.patch(addEntityPath, {},
+            await privateAxios.patch(addEntityPath, body,
                 {
                     signal: controller.signal,
                 });

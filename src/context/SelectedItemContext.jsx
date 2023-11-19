@@ -4,7 +4,6 @@ export const SelectedItemContext = createContext();
 
 const SelectedItemProvider = ({children}) => {
     const [selectedItem, setSelectedItem] = useState({
-        id: "",
         name: "",
         productType: "",
         componentType: "",
@@ -22,6 +21,14 @@ const SelectedItemProvider = ({children}) => {
         rawMaterialName: "",
         componentNames: [],
         productNames: [],
+        id: "",
+        orderProducts: [],
+        orderDate: "",
+        deliveryDate: "",
+        orderStatus: "",
+        orderId: 0,
+        productName: "",
+        quantity: 0,
     });
 
     const contextData = {
