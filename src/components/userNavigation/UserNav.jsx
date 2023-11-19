@@ -3,13 +3,19 @@ import {useContext, useState} from "react";
 import {NavLink} from 'react-router-dom';
 import {AuthContext} from "../../context/AuthContext";
 import logo from '../../assets/InventoPilotVector.png';
+import {SelectedItemContext} from "../../context/SelectedItemContext.jsx";
 
 function AuthNav() {
     const { isAuth, isAdmin, user } = useContext(AuthContext);
+    const { setSelectedItem, emptySelectedItem } = useContext(SelectedItemContext);
     const [showItemList, toggleShowItemList] = useState(false)
 
     function handleItemClick() {
         toggleShowItemList(!showItemList)
+    }
+
+    function handleOrderClick() {
+        setSelectedItem(emptySelectedItem);
     }
 
     return (
@@ -34,7 +40,8 @@ function AuthNav() {
                         <li>
                             <NavLink
                                 className={styles["link_nav-menu"]}
-                                to="/app/orders">
+                                to="/app/orders"
+                                onClick={handleOrderClick} >
                                 Orders
                             </NavLink>
                         </li>
