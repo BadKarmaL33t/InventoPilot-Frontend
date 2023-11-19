@@ -1,6 +1,6 @@
 import styles from "./AddToEntityModal.module.css";
 import {privateAxios} from "../../../api/axios.js";
-import {useLocation} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {useContext, useEffect, useState} from "react";
 import {SelectedItemContext} from "../../../context/SelectedItemContext.jsx";
 import sortEntity from "../../../helpers/sortingFetchedEntity.js";
@@ -13,6 +13,7 @@ function AddToEntityModal({open, modalVisible}) {
     const location = useLocation();
     const entityPath = location.pathname;
     const [checkedItems, setCheckedItems] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const controller = new AbortController();
@@ -92,6 +93,7 @@ function AddToEntityModal({open, modalVisible}) {
         modalVisible(false);
         setSelectedItem(selectedItem);
         setStatus("idle");
+        navigate("/loading")
     };
 
     const handlePostRequest = async (item) => {
