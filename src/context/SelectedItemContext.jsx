@@ -22,13 +22,14 @@ const SelectedItemProvider = ({children}) => {
         componentNames: [],
         productNames: [],
         id: "",
-        orderProducts: [],
+        orderProducts: [{
+            orderId: 0,
+            productName: "",
+            quantity: 0,
+        }],
         orderDate: "",
         deliveryDate: "",
         orderStatus: "",
-        orderId: 0,
-        productName: "",
-        quantity: 0,
     });
 
     const contextData = {

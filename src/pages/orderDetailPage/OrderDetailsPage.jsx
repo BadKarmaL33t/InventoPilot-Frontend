@@ -60,34 +60,34 @@ function OrderDetails() {
                     <h2 className={styles["form-title"]}>Item Details</h2>
                     <div className={styles["order-section-wrapper"]}>
                         <section className={styles["order-collection-container"]}>
-                            {selectedItem.productNames.map((productName) => (
-                                <div key={productName.id} className={styles["order-details-productName"]}>
+                            {selectedItem.orderProducts.map((orderProduct) => (
+                                <div key={orderProduct.id} className={styles["order-details-orderProduct"]}>
                                     <div className={styles["order-details"]}>
-                                        <label htmlFor={`id-field-${productName.id}`} className={styles["label"]}>Order
+                                        <label htmlFor={`id-field-${orderProduct.id}`} className={styles["label"]}>Order
                                             ID:</label>
-                                        <p className={styles["input"]} id={`id-field-${productName.id}`}>{productName.id}</p>
+                                        <p className={styles["input"]} id={`id-field-${orderProduct.id}`}>{orderProduct.id}</p>
                                     </div>
                                     {/*buttons worden geimplementeerd na het toepassen van de edit logica*/}
 
                                     {/*<button className={styles["edit-button"]} type="button"*/}
-                                    {/*        onClick={() => toggleEditMode("productName")}>{editModes.productName ? "Cancel" : "Edit"}</button>*/}
+                                    {/*        onClick={() => toggleEditMode("id")}>{editModes.orderProduct.id ? "Cancel" : "Edit"}</button>*/}
 
                                     <div className={styles["order-details"]}>
-                                        <label htmlFor={`product-name-field-${productName.id}`} className={styles["label"]}>Product
+                                        <label htmlFor={`product-name-field-${orderProduct.productName}`} className={styles["label"]}>Product
                                             Name:</label>
                                         <p className={styles["input"]}
-                                           id={`product-name-field-${productName.id}`}>{productName.productName}</p>
+                                           id={`product-name-field-${orderProduct.productName}`}>{orderProduct.productName}</p>
                                     </div>
                                     {/*<button className={styles["edit-button"]} type="button"*/}
-                                    {/*        onClick={() => toggleEditMode("quantity")}>{editModes.quantity ? "Cancel" : "Edit"}</button>*/}
+                                    {/*        onClick={() => toggleEditMode("productName")}>{editModes.orderProduct.productName ? "Cancel" : "Edit"}</button>*/}
                                     <div className={styles["order-details"]}>
-                                        <label htmlFor={`quantity-field-${productName.id}`}
+                                        <label htmlFor={`quantity-field-${orderProduct.id}`}
                                                className={styles["label"]}>Quantity:</label>
                                         <p className={styles["input"]}
-                                           id={`quantity-field-${productName.id}`}>{productName.quantity}</p>
+                                           id={`quantity-field-${orderProduct.quantity}`}>{orderProduct.quantity}</p>
                                     </div>
                                     {/*<button className={styles["edit-button"]} type="button"*/}
-                                    {/*        onClick={() => toggleEditMode("quantity")}>{editModes.quantity ? "Cancel" : "Edit"}</button>*/}
+                                    {/*        onClick={() => toggleEditMode("quantity")}>{editModes.orderProduct.quantity ? "Cancel" : "Edit"}</button>*/}
                                 </div>
                             ))}
                         </section>

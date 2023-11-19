@@ -8,9 +8,11 @@ import AppViewport from "./components/appViewport/AppViewport.jsx";
 import {AuthContext} from "./context/AuthContext.jsx";
 import {useContext} from "react";
 import UpdateModal from "./components/modals/updateModal/UpdateModal.jsx";
+import {SelectedItemContext} from "./context/SelectedItemContext.jsx";
 
 function App() {
     const { isAuth, isAdmin, user } = useContext(AuthContext);
+    const { selectedItem } = useContext(SelectedItemContext);
     const location = useLocation();
     const [pagePath, setPagePath] = useState(location.pathname);
 
@@ -20,7 +22,7 @@ function App() {
 
     return (
         <div className="window-container">
-            {/*<AppLoaderSplash/>*/}
+            <AppLoaderSplash/>
 
             <div className="menu-container">
                 <UserNav/>
@@ -37,17 +39,14 @@ function App() {
                             <>
                                 <Route path="/app/dashboard" element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/app/orders" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/app/orders/:id" element={<AppViewport page={pagePath}/>}/>
+                                <Route path={`/app/orders/${selectedItem.id}`} element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/app/orders/new" element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/app/products" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/app/products/:productName" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/app/products/new" element={<AppViewport page={pagePath}/>}/>
+                                <Route path={`/app/products/${selectedItem.name}`} element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/app/components" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/app/components/:name" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/app/components/new" element={<AppViewport page={pagePath}/>}/>
+                                <Route path={`/app/components/${selectedItem.name}`} element={<AppViewport page={pagePath}/>}/>
                                 <Route path="/app/raws" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/app/raws/:name" element={<AppViewport page={pagePath}/>}/>
-                                <Route path="/app/raws/new" element={<AppViewport page={pagePath}/>}/>
+                                <Route path={`/app/raws/${selectedItem.name}`} element={<AppViewport page={pagePath}/>}/>
                                 <Route path={`/app/users/${user.username}`} element={<AppViewport page={pagePath}/>}/>
                             </>
                         }
