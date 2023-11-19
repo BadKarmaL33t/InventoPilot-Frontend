@@ -69,13 +69,13 @@
     cursor: pointer;
 }
 
-.modal-button-add {
-    background-color: #7832d2;
-    padding: 0 4px;
+.modal-button-delete {
+    background-color: #BF1D1D;
+    padding: 4px;
 }
 
-.modal-button-add:hover {
-    background-color:var(--purple);
+.modal-button-delete:hover {
+    background-color: red;
 }
 
 .modal-button-cancel {

@@ -8,6 +8,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import formatEnum from "../../helpers/enumToCamelCase.js";
 import logo from "../../assets/InventoPilotVector.png";
 import AddToEntityModal from "../../components/modals/addToEntityModal/AddToEntityModal.jsx";
+import RemoveFromEntityModal from "../../components/modals/removeFromEntityModal/RemoveFromEntityModal.jsx";
 
 function ItemDetails() {
     const {handleSubmit, formState: {errors, isDirty, isValid}, register} = useForm({mode: 'onChange'});
@@ -16,7 +17,8 @@ function ItemDetails() {
     const {selectedItem, setSelectedItem} = useContext(SelectedItemContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const [modalOpen, toggleModalOpen] = useState(false);
+    const [addModalOpen, toggleAddModalOpen] = useState(false);
+    const [deleteModalOpen, toggleDeleteModalOpen] = useState(false);
 
     const [editModes, setEditModes] = useState({
         name: false,
@@ -320,7 +322,8 @@ function ItemDetails() {
                                             <p>Components:</p>
                                             <ul>
                                                 {selectedItem.componentNames.map((componentName) => (
-                                                    <li key={componentName} className={styles["product-relation"]}>{componentName}</li>
+                                                    <li key={componentName}
+                                                        className={styles["product-relation"]}>{componentName}</li>
                                                 ))}
                                             </ul>
                                         </div>
@@ -330,26 +333,44 @@ function ItemDetails() {
                         </section>
                     </div>
                     <div className={styles["buttons"]}>
-                        {location.pathname === "/app/products" &&
-                            <>
-                                <button
-                                    className=
-                                        {`${styles["modal-button"]} 
+                        <div className={styles["buttons-left"]}>
+                            {location.pathname === "/app/products" &&
+                                <>
+                                    <button
+                                        className=
+                                            {`${styles["modal-button"]} 
                             ${styles["modal-button-add"]}`}
-                                    type="button"
-                                    onClick={() => toggleModalOpen(true)}
-                                >
-                                    Add items
-                                </button>
+                                        type="button"
+                                        onClick={() => toggleAddModalOpen(true)}
+                                    >
+                                        Add items
+                                    </button>
 
-                                {modalOpen &&
-                                    <AddToEntityModal
-                                        open={modalOpen}
-                                        modalVisible={toggleModalOpen}
-                                    />
-                                }
-                            </>
-                        }
+                                    {addModalOpen &&
+                                        <AddToEntityModal
+                                            open={addModalOpen}
+                                            modalVisible={toggleAddModalOpen}
+                                        />
+                                    }
+                                    <button
+                                        className=
+                                            {`${styles["modal-button"]} 
+                            ${styles["modal-button-delete"]}`}
+                                        type="button"
+                                        onClick={() => toggleDeleteModalOpen(true)}
+                                    >
+                                        Remove items
+                                    </button>
+
+                                    {deleteModalOpen &&
+                                        <RemoveFromEntityModal
+                                            open={deleteModalOpen}
+                                            modalVisible={() => toggleDeleteModalOpen()}
+                                        />
+                                    }
+                                </>
+                            }
+                        </div>
                         < button className={styles["update-item-details-button"]}
                                  type="submit"
                                  id="update-button"

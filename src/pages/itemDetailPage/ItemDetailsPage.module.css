@@ -88,15 +88,36 @@ input {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     gap: 30px;
     margin-top: 32px;
+}
+
+.buttons-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
 }
 
 button:hover {
     cursor: pointer;
     background-color: var(--green);
     border: var(--green);
+    color: white;
+}
+
+.modal-button-delete {
+    background-color: #BF1D1D;
+    border: #BF1D1D;
+    color: white;
+    padding: 6px
+}
+
+.modal-button-delete:hover {
+    background-color: red;
+    border: #BF1D1D;
     color: white;
 }
