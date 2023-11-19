@@ -51,7 +51,8 @@
 .item-relations {
     border: 2px solid var(--purple);
     border-radius: 8px;
-    max-height: 160px;
+    max-height: 140px;
+    min-height: 100px;
     width: 100%;
     margin-top: 24px;
     padding: 8px 16px;

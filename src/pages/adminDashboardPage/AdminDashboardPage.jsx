@@ -7,6 +7,7 @@ import DeleteModal from "../../components/modals/deleteModal/DeleteModal.jsx";
 import {SelectedUserContext} from "../../context/SelectedUserContext.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import sortEntity from "../../helpers/sortingFetchedEntity.js";
+import formatEnum from "../../helpers/enumToCamelCase.js";
 
 function AdminDashboard() {
     const [fetchedUsers, setFetchedUsers] = useState([]);
@@ -118,7 +119,7 @@ function AdminDashboard() {
                                             {fetchedUser.username}
                                         </Link>
                                     </h2>
-                                    <p className={styles["full-name"]}> {fetchedUser.firstname} {fetchedUser.lastname} ({fetchedUser.role})</p>
+                                    <p className={styles["full-name"]}> {fetchedUser.firstname} {fetchedUser.lastname} ({formatEnum(fetchedUser.role)})</p>
                                 </div>
                             </div>
                             <button

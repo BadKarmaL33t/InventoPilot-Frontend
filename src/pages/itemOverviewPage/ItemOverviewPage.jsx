@@ -6,6 +6,7 @@ import {privateAxios} from "../../api/axios.js";
 import DeleteModal from "../../components/modals/deleteModal/DeleteModal.jsx";
 import {SelectedItemContext} from "../../context/SelectedItemContext.jsx";
 import sortEntity from "../../helpers/sortingFetchedEntity.js";
+import formatEnum from "../../helpers/enumToCamelCase.js";
 
 function ItemOverview() {
     const [fetchedItems, setFetchedItems] = useState([]);
@@ -34,7 +35,7 @@ function ItemOverview() {
                 setFetchAttempted(true);
 
                 // Automatically select the top user
-                if (sortedItems.length > 0 && sortedItems.indexOf(selectedItem) !== -1) {
+                if (sortedItems.length > 0) {
                     setSelectedItem(sortedItems[0]);
                 }
             } catch (error) {
@@ -143,7 +144,7 @@ function ItemOverview() {
                                             {fetchedItem.name}
                                         </Link>
                                     </h2>
-                                    <p className={styles["item-key-details"]}> {fetchedItem.type} {fetchedItem.stock} ({fetchedItem.productStatus})</p>
+                                    <p className={styles["item-key-details"]}> {fetchedItem.type} {fetchedItem.stock} ({formatEnum(fetchedItem.productStatus)})</p>
                                 </div>
                             </div>
                             <button
