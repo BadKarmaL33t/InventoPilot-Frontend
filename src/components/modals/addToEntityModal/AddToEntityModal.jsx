@@ -25,12 +25,18 @@ function AddToEntityModal({open, modalVisible}) {
                 let fetchPaths = [];
                 let entityTitles = [];
 
-                if (entityPath === "/app/orders" || entityPath === "/app/locations") {
-                    fetchPaths = ["/app/products", "/app/components", "/app/raws"];
-                    entityTitles = ["Products", "Components", "Raws"];
-                } else if (entityPath === "/app/products") {
+                if (entityPath === "/app/products") {
                     fetchPaths = ["/app/components", "/app/raws"];
                     entityTitles = ["Components", "Raws"];
+                } else if (entityPath === "/app/orders") {
+                    fetchPaths = ["/app/orders"];
+                    entityTitles = ["Products"];
+                } else if (entityPath === "/app/locations") {
+                    fetchPaths = ["/app/products", "/app/components", "/app/raws"];
+                    entityTitles = ["Products", "Components", "Raws"];
+                } else {
+                    fetchPaths = [""];
+                    entityTitles = [""];
                 }
 
                 const fetchedData = await Promise.all(
@@ -83,7 +89,7 @@ function AddToEntityModal({open, modalVisible}) {
         // Loop through selected items and send post requests
         for (const checkedItem of checkedItems) {
             try {
-                await handlePostRequest(checkedItem);
+                await handleAddRequest(checkedItem);
 
                 console.log(`Item ${checkedItem.name} added successfully!`);
             } catch (error) {
@@ -96,14 +102,18 @@ function AddToEntityModal({open, modalVisible}) {
         setSelectedItem(selectedItem);
     };
 
-    const handlePostRequest = async (item) => {
+    const handleAddRequest = async (item) => {
         const controller = new AbortController();
         let addEntityPath;
 
-        if (item.componentType) {
+        if (entityPath === "/app/products" && item.componentType) {
             addEntityPath = `/app/products/${selectedItem.name}/components/${item.name}`;
-        } else {
+        } else if (entityPath === "/app/products") {
             addEntityPath = `/app/products/${selectedItem.name}/raw/${item.name}`;
+        } else if (entityPath === "/app/orders") {
+            addEntityPath = `/app/orders/${selectedItem.id}/items/${item.id}`;
+        } else if (entityPath === "/app/locations") {
+            addEntityPath = `/app/locations/${selectedItem.department}/items/${item.name}`;
         }
 
         try {

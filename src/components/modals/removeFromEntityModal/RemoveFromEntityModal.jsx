@@ -1,6 +1,6 @@
 import styles from "./RemoveFromEntityModal.module.css";
 import {privateAxios} from "../../../api/axios.js";
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {useContext, useEffect, useState} from "react";
 import {SelectedItemContext} from "../../../context/SelectedItemContext.jsx";
 
@@ -9,6 +9,8 @@ function RemoveFromEntityModal({open, modalVisible}) {
     const [status, setStatus] = useState("idle");
     const [checkedItems, setCheckedItems] = useState([]);
     const navigate = useNavigate();
+    const location = useLocation();
+    const entityPath = location.pathname;
 
     useEffect(() => {
         setSelectedItem(selectedItem);
@@ -35,9 +37,9 @@ function RemoveFromEntityModal({open, modalVisible}) {
             try {
                 await handleDeleteRequest(checkedItem);
 
-                console.log(`Item ${checkedItem.name} added successfully!`);
+                console.log(`Item ${checkedItem.name} removed successfully!`);
             } catch (error) {
-                console.error(`Error adding item ${checkedItem.name}:`, error);
+                console.error(`Error removing item ${checkedItem.name}:`, error);
             }
         }
         modalVisible(false);
@@ -46,27 +48,32 @@ function RemoveFromEntityModal({open, modalVisible}) {
         setSelectedItem(selectedItem);
     };
 
-    const handleDeleteRequest = async (itemName, type) => {
+    const handleDeleteRequest = async (type, identifier) => {
         const controller = new AbortController();
-        let addEntityPath;
+        let removeEntityPath;
+
 
         if (type === "component") {
-            addEntityPath = `/app/products/${selectedItem.name}/components/${itemName}`;
-        } else {
-            addEntityPath = `/app/products/${selectedItem.name}/raw/${itemName}`;
+            removeEntityPath = `/app/products/${selectedItem.name}/components/${identifier}`;
+        } else if (type === "raw") {
+            removeEntityPath = `/app/products/${selectedItem.name}/raw/${identifier}`;
+        } else if (type === "order") {
+            removeEntityPath = `/app/orders/${selectedItem.id}/items/${identifier}`;
+        } else if (type === "location") {
+            removeEntityPath = `/app/locations/${selectedItem.department}/items/${identifier}`;
         }
 
         try {
-            await privateAxios.delete(addEntityPath,
+            await privateAxios.delete(removeEntityPath,
                 {
                     signal: controller.signal,
                 });
-            console.log(`Item ${itemName} added successfully!`);
+            console.log(`Item ${identifier} removed successfully!`);
         } catch (error) {
             if (controller.signal.aborted) {
                 console.error('Request geannuleerd:', error.message);
             } else {
-                console.error(`Error adding item ${itemName}:`, error);
+                console.error(`Error removing item ${identifier}:`, error);
             }
             controller.abort();
         }
@@ -129,6 +136,25 @@ function RemoveFromEntityModal({open, modalVisible}) {
                                             onChange={() => handleCheckboxChange(componentName, "component")}
                                         />
                                         {componentName}
+                                    </label>
+                                ))}
+                            </div>
+                        )}
+
+                        {selectedItem.productNames && selectedItem.productNames.length > 0 && (
+                            <div>
+                                <p>Products:</p>
+
+                                {selectedItem.productNames.map((productName) => (
+                                    <label key={productName} className={styles["item-label"]}>
+                                        <input
+                                            className={styles["checkbox"]}
+                                            type="checkbox"
+                                            value={productName}
+                                            checked={checkedItems.some((checkedItem) => checkedItem.name === productName)}
+                                            onChange={() => handleCheckboxChange(productName, "order")}
+                                        />
+                                        {productName}
                                     </label>
                                 ))}
                             </div>
